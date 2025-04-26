@@ -74,6 +74,75 @@
       padding-top: 0.5rem;
     }
   }
+
+  .header__heading-flex {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .header__brand-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: auto;
+    padding-left: 1rem;
+  }
+
+  .header__heading-logo-wrapper {
+    max-width: 40px;
+  }
+
+  .header__store-name,
+  .header__store-name .h2 {
+    text-decoration: none;
+    margin-left: 0.5rem;
+    font-family: "Be Vietnam Pro", sans-serif !important;
+  }
+
+  .header__store-name .h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: #1a0e13;
+    line-height: 1.2;
+  }
+
+  .header {
+    justify-content: flex-start;
+    padding: 0.75rem 2.5rem;
+    border-bottom: 1px solid #f2e8ec;
+    height: 56px;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-wrapper {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+
+  @media screen and (max-width: 749px) {
+    .header__brand-container {
+      flex-wrap: nowrap;
+    }
+
+    .header__store-name {
+      margin-left: 0.25rem;
+    }
+
+    .header__heading-logo-wrapper {
+      max-width: 32px;
+    }
+
+    .header__store-name .h2 {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+  }
 </style>
 
 {%- style -%}
@@ -149,32 +218,35 @@
 
     {%- if section.settings.logo_position != 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
+        <h1 class="header__heading header__heading-flex">
       {%- endif -%}
-      <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+      <div class="header__brand-container">
         {%- if settings.logo != blank -%}
-          <div class="header__heading-logo-wrapper">
-            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-            {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-            {{
-              settings.logo
-              | image_url: width: 600
-              | image_tag:
-                class: 'header__heading-logo motion-reduce',
-                widths: widths,
-                height: logo_height,
-                width: settings.logo_width,
-                alt: logo_alt,
-                sizes: sizes,
-                preload: true
-            }}
-          </div>
-        {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+            <div class="header__heading-logo-wrapper">
+              {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+              {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+              {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+              {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+              {{
+                settings.logo
+                | image_url: width: 600
+                | image_tag:
+                  class: 'header__heading-logo motion-reduce',
+                  widths: widths,
+                  height: logo_height,
+                  width: settings.logo_width,
+                  alt: logo_alt,
+                  sizes: sizes,
+                  preload: true
+              }}
+            </div>
+          </a>
         {%- endif -%}
-      </a>
+        <a href="{{ routes.root_url }}" class="header__store-name link link--text focus-inset">
+          <span class="h2">{{ shop.name }}</span>
+        </a>
+      </div>
       {%- if request.page_type == 'index' -%}
         </h1>
       {%- endif -%}
@@ -636,7 +708,7 @@
       "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
-      "default": 20
+      "default": 12
     },
     {
       "type": "range",
@@ -646,7 +718,7 @@
       "step": 4,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
-      "default": 20
+      "default": 12
     }
   ],
   "blocks": [
