@@ -2678,6 +2678,36 @@ details[open] .modal-overlay::after {
   position: relative;
 }
 
+.header__icon {
+  background-color: #f2e8ec;
+  border-radius: 12px;
+  padding: 0 12px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__icon svg {
+  width: 20px;
+  height: 20px;
+  color: #1a0e13;
+  stroke: #1a0e13;
+}
+
+.header__icon:hover {
+  background-color: #f2e8ec; 
+  opacity: 0.9;
+}
+
+.header__icons {
+  gap: 0.75rem; 
+}
+
+.header__icon svg path {
+  stroke-width: .2;
+}
+
 .search-modal__content-bottom {
   bottom: calc((var(--inputs-margin-offset) / 2));
 }
