@@ -24,8 +24,155 @@
 {%- endif -%}
 
 {%- style -%}
-  #Banner-{{ section.id }}::after {
-    border-radius: 24px;
+  .section-{{ section.id }}-padding {
+    padding-top: 36px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  #Banner-{{ section.id }} {
+    min-height: 480px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: 48px;  /* Más padding en desktop */
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  #Banner-{{ section.id }} {
+    min-height: 480px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .banner__heading {
+    font-family: "Be Vietnam Pro", "Noto Sans", sans-serif;
+    color: #ffffff;
+    font-size: 36px;  /* text-4xl en móvil */
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.033em;
+    margin-bottom: 0.5rem;
+  }
+
+  @media screen and (min-width: 480px) {
+    .banner__heading {
+      font-size: 48px;  /* text-5xl en desktop */
+    }
+  }
+
+  #Banner-{{ section.id }} .banner__box {
+    background: transparent;
+    padding: 1rem;
+  }
+
+  .banner__heading.h0,
+  .banner__heading.h1,
+  .banner__heading.h2 {
+    font-size: 36px;
+  }
+
+  @media screen and (min-width: 480px) {
+    .banner__heading.h0,
+    .banner__heading.h1,
+    .banner__heading.h2 {
+      font-size: 48px;
+    }
+  }
+  .banner__buttons .button,
+  .banner__buttons button,
+  .banner__buttons a.button {
+    background: #f4b8ce;
+    color: #1a0e13;
+    border: none !important;
+    border-radius: 12px;
+    height: 40px;
+    min-width: 84px;
+    max-width: 480px;
+    padding: 0 16px;
+    font-family: "Be Vietnam Pro", "Noto Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.015em;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: none;
+    border: none !important;
+    box-shadow: none !important;
+    position: relative;
+    z-index: 1;
+  }
+  .banner__buttons .button:after,
+  .banner__buttons button:after,
+  .banner__buttons a.button:after {
+    content: none !important;
+    box-shadow: none !important;
+  }
+  .banner__buttons .button:hover,
+  .banner__buttons button:hover,
+  .banner__buttons a.button:hover,
+  .banner__buttons .button:focus,
+  .banner__buttons button:focus,
+  .banner__buttons a.button:focus,
+  .banner__buttons .button:active,
+  .banner__buttons button:active,
+  .banner__buttons a.button:active {
+    border: none !important;
+    box-shadow: none !important;
+    outline: 2px solid #e6a7be; /* Opcional: outline de color suave para accesibilidad */
+    outline-offset: 2px;
+  }
+  @media screen and (min-width: 480px) {
+    .banner__buttons .button,
+    .banner__buttons button,
+    .banner__buttons a.button {
+      height: 48px;
+      font-size: 16px;
+      padding: 0 20px;
+    }
+  }
+  .banner__buttons .button:focus,
+  .banner__buttons button:focus,
+  .banner__buttons a.button:focus,
+  .banner__buttons .button:focus-visible,
+  .banner__buttons button:focus-visible,
+  .banner__buttons a.button:focus-visible {
+    border: none !important;
+    box-shadow: none !important;
+    outline: 2px solid #e6a7be; /* Opcional: outline suave para accesibilidad */
+    outline-offset: 2px;
+  }
+
+  .banner__text {
+    color: #ffffff;
+    font-family: "Be Vietnam Pro", "Noto Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 1rem;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  @media screen and (min-width: 480px) {
+    .banner__text {
+      font-size: 16px;
+    }
+  }
+
+  /* Asegurarnos que el contenedor tenga el espaciado correcto */
+  .banner__box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
   }
 {%- endstyle -%}
 
@@ -50,7 +197,7 @@
     assign fetch_priority = 'high'
   endif
 -%}
-<section class="section image-banner custom-banner-wrapper">
+<section class="section image-banner custom-banner-wrapper image-banner__media custom-banner-image section-{{ section.id }}-padding">
   <div
     id="Banner-{{ section.id }}"
     class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
@@ -117,15 +264,14 @@
     {%- endif -%}
     <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
+        {%- if section.settings.heading != blank -%}
+        {%- endif -%}
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'heading' -%}
-              <h2
-                class="banner__heading inline-richtext {{ block.settings.heading_size }}"
-                {{ block.shopify_attributes }}
-              >
-                {{ block.settings.heading }}
-              </h2>
+              <h1 class="banner__heading">
+                {{ section.settings.heading }}
+              </h1>
             {%- when 'text' -%}
               <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
                 <p>{{ block.settings.text }}</p>
@@ -176,6 +322,12 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Awaken Your Erotic Light",
+      "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+    },
     {
       "type": "image_picker",
       "id": "image",
@@ -378,28 +530,16 @@
           "id": "heading_size",
           "options": [
             {
-              "value": "h2",
-              "label": "t:sections.all.heading_size.options__1.label"
-            },
-            {
               "value": "h1",
-              "label": "t:sections.all.heading_size.options__2.label"
+              "label": "t:sections.image-banner.blocks.heading.settings.heading_size.options__1.label"
             },
             {
               "value": "h0",
-              "label": "t:sections.all.heading_size.options__3.label"
-            },
-            {
-              "value": "hxl",
-              "label": "t:sections.all.heading_size.options__4.label"
-            },
-            {
-              "value": "hxxl",
-              "label": "t:sections.all.heading_size.options__5.label"
+              "label": "t:sections.image-banner.blocks.heading.settings.heading_size.options__2.label"
             }
           ],
-          "default": "h1",
-          "label": "t:sections.all.heading_size.label"
+          "default": "h0",
+          "label": "t:sections.image-banner.blocks.heading.settings.heading_size.label"
         }
       ]
     },

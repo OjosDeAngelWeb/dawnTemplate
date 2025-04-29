@@ -15,6 +15,20 @@
   transform: perspective(0);
 }
 
+.custom-banner-image {
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 750px) {
+  .custom-banner-image {
+    border-radius: 0; /* En desktop sin bordes redondeados */
+  }
+}
+
 @media only screen and (max-width: 749px) {
   .banner--content-align-mobile-right .banner__box {
     text-align: right;
@@ -498,10 +512,9 @@
 }
 
 .custom-banner-wrapper {
-  max-width: 1200px;
+  max-width: 806px;
   margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding: 1.25 rem;
 }
 
 .banner__media {

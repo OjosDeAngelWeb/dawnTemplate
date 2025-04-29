@@ -1249,21 +1249,12 @@
         }
       },
       "blocks": {
-        "heading": {
-          "name": "Heading",
-          "settings": {
-            "heading": {
-              "label": "Heading",
-              "default": "Image banner"
-            }
-          }
-        },
         "text": {
           "name": "Text",
           "settings": {
             "text": {
               "label": "Text",
-              "default": "Give customers details about the banner image(s) or content on the template."
+              "default": "Explore our sensual sanctuary of celestial toys, erotic lingerie, and mystical costumes"
             },
             "text_style": {
               "options__1": {
