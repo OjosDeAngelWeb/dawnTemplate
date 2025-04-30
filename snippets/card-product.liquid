@@ -605,11 +605,16 @@
       </div>
       <div class="card__content">
         <div class="card__information">
-          <h3 class="card__heading card__heading--placeholder{% if settings.card_style == 'standard' %} h5{% endif %}">
-            <a role="link" aria-disabled="true" class="full-unstyled-link">
-              {{ 'onboarding.product_title' | t }}
+          <h3 class="card__heading">
+            <a
+              href="{{ card_product.url }}"
+              class="full-unstyled-link text-[#1a0e13] text-base font-medium leading-normal"
+              style="font-family: 'Be Vietnam Pro', sans-serif;"
+            >
+              {{ card_product.title | escape }}
             </a>
           </h3>
+
           <div class="card-information">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>

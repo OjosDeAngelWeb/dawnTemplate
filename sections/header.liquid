@@ -375,7 +375,7 @@
           </button>
           <input
             class="search__input field__input"
-            id="{{ input_id }}"
+            id="Search-In-Modal"
             type="search"
             name="q"
             value="{{ search.terms | escape }}"
@@ -588,7 +588,6 @@
 
     closeSearchModal() {
       this.searchModal = this.searchModal || this.header.querySelector('details-modal');
-      this.searchModal.close(false);
     }
   }
 
