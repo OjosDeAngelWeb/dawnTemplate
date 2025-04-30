@@ -1,0 +1,163 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    {% if section.settings.title != blank %}
+      <h2 class="{{ section.settings.heading_size }} text-[#1a0e13] font-bold tracking-[-0.015em] mb-6 text-center">
+        {{ section.settings.title }}
+      </h2>
+    {% endif %}
+
+    {% assign collection = section.settings.menu %}
+    {% assign collections_to_display = collection.links | slice: 0, section.settings.items_to_show %}
+
+    {% if collections_to_display.size > 0 %}
+      <div class="grid grid-cols-{{ section.settings.columns_mobile }} md:grid-cols-{{ section.settings.columns_desktop }} gap-4">
+        {% for subcollection in collections_to_display %}
+          <a
+            href="{{ subcollection.url }}"
+            class="flex items-center gap-3 rounded-lg border border-[#e6d1d9] bg-[#fbf8fa] p-4 hover:scale-[1.02] transition duration-200"
+          >
+            <h3 class="text-[#1a0e13] text-base font-bold leading-tight">{{ subcollection.title }}</h3>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-center text-[#94516a]">No se encontraron colecciones para mostrar.</p>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "t:sections.categories.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.categories.settings.menu.label"
+    },
+    {
+      "type": "range",
+      "id": "items_to_show",
+      "min": 2,
+      "max": 25,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.categories.settings.items_to_show.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "t:sections.categories.settings.title.default",
+      "label": "t:sections.categories.settings.title.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.categories.settings.columns_desktop.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.categories.settings.header_mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "2",
+      "label": "t:sections.categories.settings.columns_mobile.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.categories.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.categories.settings.columns_mobile.options__2.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.categories.presets.name"
+    }
+  ]
+}
+{% endschema %}

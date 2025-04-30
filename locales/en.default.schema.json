@@ -834,6 +834,48 @@
         "name": "Featured collection"
       }
     },
+    "categories": {
+      "name": "Categories",
+      "settings": {
+        "header_text": {
+          "content": "Text"
+        },
+        "title": {
+          "label": "Heading",
+          "default": "Categories"
+        },
+        "header_collection": {
+          "content": "Collection layout"
+        },
+        "header_mobile": {
+          "content": "Mobile layout"
+        }, 
+        "menu": {
+          "label": "Menú"
+        },                
+        "collection": {
+          "label": "Collection"
+        },
+        "items_to_show": {
+          "label": "Categories count"
+        },
+        "columns_desktop": {
+          "label": "Columns"
+        },
+        "columns_mobile": {
+          "label": "Columns",
+          "options__1": {
+            "label": "1"
+          },
+          "options__2": {
+            "label": "2"
+          }
+        },
+      },
+      "presets": {
+        "name": "Categories"
+      }
+    },
     "featured-product": {
       "name": "Featured product",
       "blocks": {
