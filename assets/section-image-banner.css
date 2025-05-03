@@ -174,11 +174,9 @@
 }
 
 .banner__media {
-  height: 100%;
   position: absolute;
-  left: 0;
   top: 0;
-  width: 100%;
+  inset: 0 50px;
 }
 
 .banner__media-half {
