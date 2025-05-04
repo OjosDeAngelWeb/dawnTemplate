@@ -12,14 +12,16 @@
     {% assign collections_to_display = collection.links | slice: 0, section.settings.items_to_show %}
 
     {% if collections_to_display.size > 0 %}
-      <div class="grid grid-cols-{{ section.settings.columns_mobile }} md:grid-cols-{{ section.settings.columns_desktop }} gap-4">
+      <div
+        class="custom-grid"
+        style="--columns: {{ section.settings.columns_desktop }};"
+      >
         {% for subcollection in collections_to_display %}
-          <a
-            href="{{ subcollection.url }}"
-            class="flex items-center gap-3 rounded-lg border border-[#e6d1d9] bg-[#fbf8fa] p-4 hover:scale-[1.02] transition duration-200"
-          >
-            <h3 class="text-[#1a0e13] text-base font-bold leading-tight">{{ subcollection.title }}</h3>
-          </a>
+          <div class="category-card">
+            <a href="{{ subcollection.url }}">
+              <h3 class="category-card__title">{{ subcollection.title }}</h3>
+            </a>
+          </div>
         {% endfor %}
       </div>
     {% else %}
@@ -32,6 +34,54 @@
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  .custom-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  @media screen and (min-width: 749px) and (max-width: 990px) {
+    .custom-grid {
+      grid-template-columns: repeat(var(--columns-mobile), minmax(0, 1fr));
+  }
+  }
+
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #e6d1d9;
+    border-radius: 1.5rem;
+    text-decoration: none;
+    color: #1a0e13;
+    height: 100%;
+    width: 100%;
+    background-color: white; /* Opcional si quieres que tenga fondo */
+    box-sizing: border-box;
+  }
+
+  .category-card__title {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .category-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+  }
+
+  .category-card a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
   }
 </style>
 
