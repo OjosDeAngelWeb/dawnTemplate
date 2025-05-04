@@ -876,6 +876,30 @@
         "name": "Categories"
       }
     },
+    "blog": {
+      "name": "Blog",
+      "settings": {
+        "header_text": {
+          "content": "Text"
+        },
+        "title": {
+          "label": "Heading",
+          "default": "Pleasure Guide"
+        },
+        "header_collection": {
+          "content": "Collection layout"
+        },
+        "header_mobile": {
+          "content": "Mobile layout"
+        }, 
+        "items_to_show": {
+          "label": "Blog count"
+        },
+      },
+      "presets": {
+        "name": "Blog"
+      }
+    },
     "featured-product": {
       "name": "Featured product",
       "blocks": {
