@@ -52,39 +52,43 @@
       align-items: center;
       justify-content: center;
       padding: 0.75rem 2rem;
-      border: 1px solid #e6d1d9;
       border-radius: 0.75rem;
       background-color: #fff;
-      color: #1a0e13;
       transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
-      width: 100%; /* 👈 Ocupar el 100% del ancho de la celda del grid */
-      min-height: 72px; /* 👈 Dar altura fija mínima como en los botones de la referencia */
+      width: 100%;
+      min-height: 72px;
       box-sizing: border-box;
       text-decoration: none;
   }
 
   .category-card a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      width: 100%; /* 👈 Muy importante para que ocupe toda la tarjeta */
-      min-width: 200px; /* 👈 Le da un mínimo a cada botón para que sea ancho aunque haya poco contenido */
-      text-decoration: none;
-      color: inherit;
-      font-weight: 700;
-      font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    height: 100%;
+    padding: 0.75rem 2rem;
+    border: 1px solid #e6d1d9;
+    border-radius: 0.75rem;
+    background-color: #fff;
+    color: #1a0e13;
+    text-decoration: none;
+    transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    font-weight: 700;
+    font-size: 1rem;
   }
 
-  .category-card:hover {
-      box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.1);
-      border-color: #c8a3b2;
+  .category-card a:hover {
+    box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.1);
+    border-color: #c8a3b2;
+    background-color: #faf6f8; /* Un tono suave para dar efecto de hover en todo el área */
   }
 
   .category-card__title {
-      margin: 0;
-      font-weight: 700;
-      line-height: 1.2;
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.2;
   }
 
     .category-card a:hover {
