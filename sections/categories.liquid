@@ -31,57 +31,64 @@
 </div>
 
 <style>
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
-  }
-  .custom-grid {
-    display: grid;
-    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
-    gap: 1rem;
-  }
-
-  @media screen and (min-width: 749px) and (max-width: 990px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
     .custom-grid {
-      grid-template-columns: repeat(var(--columns-mobile), minmax(0, 1fr));
-  }
-  }
+      display: grid;
+      grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+      gap: 1rem;
+    }
 
-  .category-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    border: 1px solid #e6d1d9;
-    border-radius: 1.5rem;
-    text-decoration: none;
-    color: #1a0e13;
-    height: 100%;
-    width: 100%;
-    background-color: white; /* Opcional si quieres que tenga fondo */
-    box-sizing: border-box;
-  }
+    @media screen and (min-width: 749px) and (max-width: 990px) {
+      .custom-grid {
+        grid-template-columns: repeat(var(--columns-mobile), minmax(0, 1fr));
+    }
+    }
 
-  .category-card__title {
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.25;
-    margin: 0;
-  }
-
-  .category-card:hover {
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+    .category-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 2rem;
+      border: 1px solid #e6d1d9;
+      border-radius: 0.75rem;
+      background-color: #fff;
+      color: #1a0e13;
+      transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+      width: 100%; /* 👈 Ocupar el 100% del ancho de la celda del grid */
+      min-height: 72px; /* 👈 Dar altura fija mínima como en los botones de la referencia */
+      box-sizing: border-box;
+      text-decoration: none;
   }
 
   .category-card a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%; /* 👈 Muy importante para que ocupe toda la tarjeta */
+      min-width: 200px; /* 👈 Le da un mínimo a cada botón para que sea ancho aunque haya poco contenido */
+      text-decoration: none;
+      color: inherit;
+      font-weight: 700;
+      font-size: 1rem;
+  }
+
+  .category-card:hover {
+      box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.1);
+      border-color: #c8a3b2;
+  }
+
+  .category-card__title {
+      margin: 0;
+      font-weight: 700;
+      line-height: 1.2;
+  }
+
+    .category-card a:hover {
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
 </style>
 
