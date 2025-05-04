@@ -157,7 +157,7 @@
     stroke: #6e1e38; /* Color vino/morado suave para la lupa */
   }
 
-  .header__search .field__input {
+  .header__search .field__input_header {
     color: rgb(26, 14, 19); /* Color del texto del input */
     font-family: "Be Vietnam Pro", "Noto Sans", sans-serif;
     font-size: 1rem;
@@ -165,21 +165,17 @@
     line-height: normal;
   }
 
-  .header__search .field__input:focus {
-    border-color: rgba(26, 14, 19, 0.5);
-    box-shadow: 0 0 0 0.3rem rgba(232, 183, 200, 0.4); /* Halo rosado pastel */
-    outline: none;
-  }
+
 
   .search__input,
-  .field__input {
+  .field__input_header {
     background: transparent !important;
-    border: none !important; /* 🔥 Esto quita ese borde negro feo */
-    outline: none !important; /* 🔥 Esto quita cualquier borde de focus */
-    box-shadow: none !important; /* 🔥 Quita cualquier sombra que pueda simular un borde */
-    padding: 0 !important; /* 🔥 Elimina cualquier padding interno extra */
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
     margin: 0 !important;
-    line-height: 1 !important; /* 🔥 Corrige el espacio vertical */
+    line-height: 1 !important;
   }
 
 
@@ -374,7 +370,7 @@
             </span>
           </button>
           <input
-            class="search__input field__input"
+            class="search__input field__input field__input_header"
             id="Search-In-Modal"
             type="search"
             name="q"
