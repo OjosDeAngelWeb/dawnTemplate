@@ -1771,6 +1771,10 @@ details[open] > .share-button__fallback {
   font-weight: 400;
 }
 
+.field:has(label) input::placeholder {
+  color: transparent;
+}
+
 .field__button {
   align-items: center;
   background-color: transparent;
