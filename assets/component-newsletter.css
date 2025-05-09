@@ -10,21 +10,59 @@
 @media screen and (min-width: 750px) {
   .newsletter-form {
     align-items: flex-start;
-    margin: 0 auto;
-    max-width: 36rem;
+    margin-left: 0;
+    margin-right: auto;
+    max-width: none;
   }
 }
 
+.footer-block__newsletter {
+  text-align: start;
+}
+
 .newsletter-form__field-wrapper {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
 }
 
 .newsletter-form__field-wrapper .field__input {
   padding-right: 5rem;
 }
 
+.newsletter-form__field-wrapper .field__button {
+  margin-top: 0.5rem;
+  width: fit-content;
+  align-self: flex-start;
+}
+
 .newsletter-form__field-wrapper .field {
-  z-index: 0;
+  width: 100%;
+  display: block; /* fuerza a que el input y botón no estén en fila */
+}
+
+.newsletter-form__field-wrapper button {
+  align-self: flex-start; /* alinea a la izquierda */
+  margin-top: 0.5rem;
+  width: auto; /* evita que tome todo el ancho */
+}
+
+.newsletter-submit-button {
+  background-color: #f4b8ce;
+  color: #1a0e13;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 1rem;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.newsletter-submit-button:hover {
+  background-color: #e3a3bc;
 }
 
 .newsletter-form__message {
@@ -43,13 +81,23 @@
 }
 
 .newsletter-form__button {
-  width: 4.4rem;
-  margin: 0;
-  right: var(--inputs-border-width);
-  top: 0;
-  height: 100%;
-  z-index: 2;
+  background-color: #f4b8ce;
+  color: #1a0e13;
+  font-weight: bold;
+  font-size: 0.875rem;
+  padding: 0.4rem 1.25rem;
+  border-radius: 0.75rem;
+  border: none;
+  width: fit-content;
+  height: auto;
+  min-width: 0;
+  transition: background-color 0.2s ease-in-out;
 }
+
+.newsletter-form__button:hover {
+  background-color: #e6a2bd;
+}
+
 
 .newsletter-form__button:focus-visible {
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0 0.4rem rgba(var(--color-foreground));
@@ -68,4 +116,8 @@
 
 .newsletter-form__button .icon {
   width: 1.5rem;
+}
+
+.button-label {
+  display: inline-block;
 }
