@@ -26,7 +26,7 @@
 .newsletter-form__field-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
   align-items: flex-start;
   width: 100%;
 }
@@ -71,7 +71,8 @@
 
 .newsletter-email-input {
   width: 100%;
-  padding: 1rem 1.25rem;
+  height: 4rem;
+  padding: 1.25rem 1.25rem;
   border: 1px solid #e6d1d9;
   border-radius: 0.75rem;
   background-color: #fff;
