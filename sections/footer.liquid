@@ -103,6 +103,14 @@
       {%- endif -%}
     </div>
   </div>
+  {% assign links = section.settings.menu.links %}
+  {% if links.size > 0 %}
+    <div class="footer-menu">
+      {%- for link in links %}
+        <a href="{{ link.url }}" class="footer-menu__item">{{ link.title }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
 </footer>
 
 {% schema %}
@@ -208,6 +216,12 @@
     }
   ],
   "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.footer.settings.menu.label"
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
