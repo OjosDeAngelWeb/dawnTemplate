@@ -4,6 +4,15 @@
     <p class="ads-hero__subtitle">Explora tu sensualidad con elegancia y magia</p>
     <a href="/collections/all" class="ads-hero__button">Descubrir colección</a>
   </div>
+  {% if section.settings.box_image != blank %}
+    <img
+      class="landing-hero__image"
+      src="{{ section.settings.box_image | image_url: width: 800 }}"
+      alt="Caja Ojos de Ángel"
+      width="{{ section.settings.box_image.width }}"
+      height="{{ section.settings.box_image.height }}"
+    >
+  {% endif %}
 </section>
 
 <style>
@@ -40,6 +49,19 @@
     transition: background 0.3s ease;
   }
 
+  .landing-hero-image {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    z-index: 2;
+  }
+
+  .landing-hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
   .ads-hero__button:hover {
     background-color: #b58e6c;
   }
@@ -66,6 +88,11 @@
       "type": "image_picker",
       "id": "background_mobile",
       "label": "Imagen de fondo para móvil (opcional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "box_image",
+      "label": "Imagen decorativa (caja)"
     }
   ],
   "presets": [
