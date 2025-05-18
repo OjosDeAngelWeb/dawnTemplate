@@ -1,0 +1,8 @@
+/* Landing page specific styles */
+.landing-template {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add your landing page specific styles below */

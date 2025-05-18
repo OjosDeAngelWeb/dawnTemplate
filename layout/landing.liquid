@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    {{ content_for_header }}
+    <meta charset="utf-8">
+    <title>{{ page_title }}</title>
+    {{ 'landing.css' | asset_url | stylesheet_tag }}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    <!-- Agrega otros CSS o fuentes si los usas -->
+  </head>
+  <body class="landing">
+    {{ content_for_layout }}
+  </body>
+</html>

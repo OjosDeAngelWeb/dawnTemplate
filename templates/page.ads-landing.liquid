@@ -1,0 +1,56 @@
+{% layout 'landing' %}
+
+<section class="landing-hero bg-[url('https://your-image-url.com/bg-cielo.jpg')] bg-cover bg-center text-center text-[#1a0e13] px-6 py-20">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">
+      Tu deseo también es luz. <span class="text-pink-400">✨</span>
+    </h1>
+    <p class="text-lg md:text-xl mb-8">Explora tu sensualidad con elegancia y magia.</p>
+    <a
+      href="/collections/all"
+      class="bg-[#d4ae6c] hover:bg-[#b9944e] text-white px-6 py-3 rounded-full font-semibold shadow-lg transition"
+      >Descubre tu colección celestial</a
+    >
+  </div>
+</section>
+
+<section class="bg-[#fefefe] text-center py-16 px-6">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Una experiencia mágica desde el empaque</h2>
+    <p class="text-base text-[#5c4550]">
+      Creamos espacios seguros para tu placer. En Ojos de Ángel, cada detalle está pensado para honrar tu cuerpo, tu
+      deseo y tu intuición.
+    </p>
+  </div>
+</section>
+
+<section class="bg-[#f5e7f2] py-16 px-6">
+  <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div>
+      <span class="svg-wrapper">
+        {{ 'send.svg' | asset_url | img_tag: 'Envío discreto' }}
+      </span>
+      <p class="font-semibold">Envío discreto</p>
+    </div>
+    <div>
+      <span class="svg-wrapper">
+        {{ 'message.svg' | asset_url | img_tag: 'Envío discreto' }}
+      </span>
+      <p class="font-semibold">Empaque elegante</p>
+    </div>
+    <div>
+      <span class="svg-wrapper">
+        {{ 'block.svg' | asset_url | img_tag: 'Envío discreto' }}
+      </span>
+      <p class="font-semibold">Pago seguro</p>
+    </div>
+    <div>
+      <span class="svg-wrapper">
+        {{ 'email.svg' | asset_url | img_tag: 'Envío discreto' }}
+      </span>
+      <p class="font-semibold">Diseño intuitivo</p>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonios, seguridad y CTA final se agregarán en siguientes pasos -->
