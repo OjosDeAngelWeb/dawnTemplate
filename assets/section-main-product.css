@@ -189,6 +189,28 @@ product-info {
   right: 1.5rem;
 }
 
+.product-form__input--pill input[type="radio"] + label {
+  border: 1px solid #e6d1d9;
+  background-color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 12px;
+  color: #1a0e13;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.product-form__input--pill input[type="radio"]:checked + label {
+  border-color: #94516a;
+  background-color: #f2e8ec;
+  box-shadow: 0 0 0 2px rgba(148, 81, 106, 0.2);
+}
+
+.product-form__input--pill label:hover {
+  cursor: pointer;
+  border-color: #c8a3b2;
+}
+
 .product-form__submit {
   margin-bottom: 1rem;
 }

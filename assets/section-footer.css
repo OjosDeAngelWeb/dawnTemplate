@@ -507,33 +507,19 @@
 .footer-menu {
   display: flex;
   flex-wrap: wrap;
+  gap: 2rem;
   justify-content: center;
-  gap: 1.5rem 3rem; /* espacio entre columnas y filas */
-  max-width: 100%;
   margin-top: 2rem;
 }
 
 .footer-menu__item {
-  font-size: 3rem; /* más grande */
-  font-weight: 600;
-  color: #82384c;
+  color: #82384c; /* tono vino/morado de tu branding */
+  font-weight: 500;
   text-decoration: none;
+  font-size: 1rem;
   transition: color 0.2s ease-in-out;
-  white-space: nowrap; /* evita que los textos largos se corten */
 }
 
 .footer-menu__item:hover {
-  color: #a24c64;
-}
-
-@media screen and (min-width: 768px) {
-  .footer-menu {
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .footer-menu__item {
-    font-size: 2rem; /* aún más legible en escritorio */
-  }
+  color: #a24c64; /* color más claro para hover */
 }
