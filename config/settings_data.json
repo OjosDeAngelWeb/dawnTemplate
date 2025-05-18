@@ -139,7 +139,11 @@
         "settings": {
           "background": "shopify://shop_images/backgorund.png",
           "background_mobile": "shopify://shop_images/backgroundMobile.png",
-          "box_image": "shopify://shop_images/HeroBox.png"
+          "box_image": "shopify://shop_images/Box.webp",
+          "title": "Tu deseo también es luz. ✨",
+          "subtitle": "Explora tu sensualidad desde lo más alto.",
+          "button_label": "Descubre tu colección celestial",
+          "button_link": "shopify://collections/all"
         }
       }
     },

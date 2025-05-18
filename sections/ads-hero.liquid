@@ -1,32 +1,43 @@
 <section class="ads-hero {% if section.settings.background_mobile != blank %}has-mobile-bg{% endif %}">
-  <div class="ads-hero__content">
-    <h1 class="ads-hero__title">Tu deseo también es luz ✨</h1>
-    <p class="ads-hero__subtitle">Explora tu sensualidad con elegancia y magia</p>
-    <a href="/collections/all" class="ads-hero__button">Descubrir colección</a>
-  </div>
-  {% if section.settings.box_image != blank %}
+  {%- if section.settings.box_image != blank -%}
     <img
-      class="landing-hero__image"
-      src="{{ section.settings.box_image | image_url: width: 800 }}"
-      alt="Caja Ojos de Ángel"
-      width="{{ section.settings.box_image.width }}"
-      height="{{ section.settings.box_image.height }}"
+      src="{{ section.settings.box_image | image_url }}"
+      width="20rem"
+      height="500rem"
+      alt="Caja celestial Ojos de Ángel"
+      class="ads-hero__box-bg"
+      loading="lazy"
     >
-  {% endif %}
+  {%- endif -%}
+  <div class="ads-hero__content">
+    <h1 class="text-[#1a0e13] text-4xl md:text-5xl font-black leading-tight tracking-[-0.03em] mb-4">
+      {{ section.settings.title }}
+    </h1>
+    <p class="text-[#94516a] text-base md:text-lg font-medium leading-normal mb-6 max-w-xl mx-auto">
+      {{ section.settings.subtitle }}
+    </p>
+    <a
+      href="{{ section.settings.button_link }}"
+      class="ads-hero__button"
+    >
+      {{ section.settings.button_label }}
+    </a>
+  </div>
 </section>
 
 <style>
   .ads-hero {
-    position: relative;
-    padding: 6rem 1.5rem;
-    text-align: left;
     background-image: url({{ section.settings.background | image_url }});
-    color: #1a0e13;
+    position: relative;
+    text-align: left;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     overflow: hidden;
   }
 
-  .adshero__content {
-    max-width: 600px;
+  .ads-hero__content {
     position: relative;
     z-index: 2;
   }
@@ -75,6 +86,19 @@
     pointer-events: none;
   }
 
+  .ads-hero__box-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px; /* antes era 500px */
+    max-height: 700px;
+    width: 90%;
+    z-index: 0;
+    opacity: 1;
+    pointer-events: none;
+  }
+
   @media screen and (max-width: 990px) {
     .ads-hero {
       background-image: url({{ section.settings.background_mobile | image_url }});
@@ -100,6 +124,10 @@
     .ads-hero__buttons {
       justify-content: center;
     }
+
+    .ads-hero__box-bg {
+      max-width: 300px;
+    }
   }
 </style>
 
@@ -123,6 +151,30 @@
       "type": "image_picker",
       "id": "box_image",
       "label": "Imagen decorativa (caja)"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Tu deseo también es luz. ✨"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Explora tu sensualidad desde lo más alto."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto del botón",
+      "default": "Descubre tu colección celestial"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón",
+      "default": "/collections/all"
     }
   ],
   "presets": [
