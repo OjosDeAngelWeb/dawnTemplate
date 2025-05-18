@@ -1,4 +1,4 @@
-<section class="ads-hero" style="background-image: url({{ section.settings.background | image_url }});">
+<section class="ads-hero {% if section.settings.background_mobile != blank %}has-mobile-bg{% endif %}">
   <div class="ads-hero__content">
     <h1 class="ads-hero__title">Tu deseo también es luz ✨</h1>
     <p class="ads-hero__subtitle">Explora tu sensualidad con elegancia y magia</p>
@@ -8,31 +8,46 @@
 
 <style>
   .ads-hero {
+    background-image: url({{ section.settings.background | image_url }});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 6rem 2rem;
+    padding: 6rem 1.5rem;
     text-align: center;
-  }
-  .ads-hero__title {
-    font-size: 2.5rem;
-    font-weight: 700;
     color: #1a0e13;
   }
+
+  .ads-hero__title {
+    font-size: 2.8rem;
+    font-weight: 700;
+  }
+
   .ads-hero__subtitle {
     font-size: 1.25rem;
     margin-top: 1rem;
     color: #4b2b34;
   }
+
   .ads-hero__button {
     display: inline-block;
     margin-top: 2rem;
-    padding: 0.8rem 2rem;
+    padding: 0.75rem 2rem;
     border-radius: 9999px;
     background-color: #d1b18e;
     color: white;
     font-weight: 600;
     text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .ads-hero__button:hover {
+    background-color: #b58e6c;
+  }
+
+  @media screen and (max-width: 990px) {
+    .ads-hero.has-mobile-bg {
+      background-image: url({{ section.settings.background_mobile | image_url }});
+    }
   }
 </style>
 
@@ -46,6 +61,11 @@
       "type": "image_picker",
       "id": "background",
       "label": "Imagen de fondo del cielo"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_mobile",
+      "label": "Imagen de fondo para móvil (opcional)"
     }
   ],
   "presets": [

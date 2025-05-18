@@ -137,7 +137,8 @@
       "ads-hero": {
         "type": "ads-hero",
         "settings": {
-          "background": "shopify://shop_images/backgorund.png"
+          "background": "shopify://shop_images/backgorund.png",
+          "background_mobile": "shopify://shop_images/siluetas-eroticas-en-carpa-bosque-noche-juego-pareja.webp"
         }
       }
     },
