@@ -139,7 +139,7 @@
         "settings": {
           "background": "shopify://shop_images/backgorund.png",
           "background_mobile": "shopify://shop_images/backgroundMobile.png",
-          "box_image": "shopify://shop_images/BoxImage.png"
+          "box_image": "shopify://shop_images/HeroBox.png"
         }
       }
     },
