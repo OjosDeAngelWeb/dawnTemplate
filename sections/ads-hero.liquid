@@ -16,59 +16,89 @@
 </section>
 
 <style>
-  .ads-hero {
-    background-image: url({{ section.settings.background | image_url }});
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  .landing-hero {
+    position: relative;
     padding: 6rem 1.5rem;
-    text-align: center;
+    text-align: left;
+    background-image: url({{ section.settings.background | image_url }});
     color: #1a0e13;
+    overflow: hidden;
   }
 
-  .ads-hero__title {
-    font-size: 2.8rem;
-    font-weight: 700;
-  }
-
-  .ads-hero__subtitle {
-    font-size: 1.25rem;
-    margin-top: 1rem;
-    color: #4b2b34;
-  }
-
-  .ads-hero__button {
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 0.75rem 2rem;
-    border-radius: 9999px;
-    background-color: #d1b18e;
-    color: white;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background 0.3s ease;
-  }
-
-  .landing-hero-image {
-    max-width: 400px;
-    width: 100%;
-    margin: 0 auto;
+  .landing-hero__content {
+    max-width: 600px;
+    position: relative;
     z-index: 2;
   }
 
-  .landing-hero-image img {
-    width: 100%;
-    height: auto;
-    display: block;
+  .landing-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
 
-  .ads-hero__button:hover {
-    background-color: #b58e6c;
+  .landing-hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: #4c3a4f;
+  }
+
+  .landing-hero__buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .landing-hero__button {
+    background-color: #c8a3b2;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    border: none;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.2s;
+  }
+
+  .landing-hero__button:hover {
+    background-color: #a67a8c;
+  }
+
+  .landing-hero__image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 40%;
+    z-index: 1;
+    pointer-events: none;
   }
 
   @media screen and (max-width: 990px) {
-    .ads-hero.has-mobile-bg {
+    .landing-hero {
       background-image: url({{ section.settings.background_mobile | image_url }});
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+
+    .landing-hero h1 {
+      font-size: 2rem;
+    }
+
+    .landing-hero p {
+      font-size: 1rem;
+    }
+
+    .landing-hero__image {
+      max-width: 70%;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+    }
+
+    .landing-hero__buttons {
+      justify-content: center;
     }
   }
 </style>
