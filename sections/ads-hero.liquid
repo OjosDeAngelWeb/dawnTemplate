@@ -1,31 +1,78 @@
-<section class="ads-hero {% if section.settings.background_mobile != blank %}has-mobile-bg{% endif %}">
-  {%- if section.settings.box_image != blank -%}
-    <img
-      src="{{ section.settings.box_image | image_url }}"
-      width="20rem"
-      height="500rem"
-      alt="Caja celestial Ojos de Ángel"
-      class="ads-hero__box-bg"
-      loading="lazy"
-    >
-  {%- endif -%}
-  <div class="ads-hero__content">
-    <h1 class="text-[#1a0e13] text-4xl md:text-5xl font-black leading-tight tracking-[-0.03em] mb-4">
-      {{ section.settings.title }}
-    </h1>
-    <p class="text-[#94516a] text-base md:text-lg font-medium leading-normal mb-6 max-w-xl mx-auto">
-      {{ section.settings.subtitle }}
-    </p>
-    <a
-      href="{{ section.settings.button_link }}"
-      class="ads-hero__button"
-    >
-      {{ section.settings.button_label }}
-    </a>
+<section class="ads-hero">
+  <div class="ads-hero__layout">
+    <div class="ads-hero__header">
+      <div class="logo"></div>
+      <div class="menu_links">
+        {% assign collection = section.settings.menu.links %}
+        {% for subcollection in collection %}
+          <a href="{{ subcollection.url }}">
+            <h3 class="collection_link">{{ subcollection.title }}</h3>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="ads-hero__content">
+      <div class="ads-hero__left">
+        <h1 class="ads-hero__title">
+          {{ section.settings.title }}
+        </h1>
+        <p class="ads-hero__subtitle">
+          {{ section.settings.subtitle }}
+        </p>
+        <a
+          href="{{ section.settings.button_link }}"
+          class="ads-hero__button"
+        >
+          {{ section.settings.button_label }}
+        </a>
+      </div>
+      {%- if section.settings.box_image != blank -%}
+        <img
+          src="{{ section.settings.box_image | image_url }}"
+          width="20rem"
+          height="500rem"
+          alt="Caja celestial Ojos de Ángel"
+          class="ads-hero__box-bg"
+          loading="lazy"
+        >
+      {%- endif -%}
+      <div class="ads-hero__right">
+        <p class="ads-hero__title">
+          {{ section.settings.right_title }}
+        </p>
+        <p class="ads-hero__subtitle">
+          {{ section.settings.right_subtitle }}
+        </p>
+        <a
+          href="{{ section.settings.right_button_link }}"
+          class="ads-hero__button"
+        >
+          {{ section.settings.righ_button_label }}
+        </a>
+      </div>
+    </div>
+    <div class="ads-hero__benefits">
+      <div>
+        <img src="{{ 'icon-envio.svg' | asset_url }}" alt="Envío discreto">
+        <p>Envío discreto</p>
+      </div>
+      <div>
+        <img src="{{ 'icon-empaque.svg' | asset_url }}" alt="Empaque elegante">
+        <p>Empaque elegante</p>
+      </div>
+      <div>
+        <img src="{{ 'icon-seguro.svg' | asset_url }}" alt="Pago seguro">
+        <p>Paso seguro</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
+  .ads-hero__layout {
+    display: table;
+  }
+
   .ads-hero {
     height: 100vh;
     display: flex;
@@ -39,8 +86,45 @@
   }
 
   .ads-hero__content {
+    display: flex;
     position: relative;
+    justify-content: center;
     z-index: 2;
+  }
+
+  .ads-hero__quotes {
+    flex: 1;
+    min-width: 250px;
+    color: #4c3a4f;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    z-index: 2;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 360px;
+  }
+
+  .ads-hero__benefits {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    gap: 3rem;
+    margin-top: 3rem;
+    z-index: 2;
+    position: relative;
+  }
+
+  .ads-hero__right {
+    text-align: right;
+    z-index: 2;
+    position: relative;
+  }
+
+  .ads-hero__left {
+    text-align: left;
+    z-index: 2;
+    position: relative;
   }
 
   .ads-hero h1 {
@@ -138,6 +222,12 @@
   "class": "section section-hero",
   "settings": [
     {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    },
+    {
       "type": "image_picker",
       "id": "background",
       "label": "Imagen de fondo del cielo"
@@ -173,6 +263,30 @@
     {
       "type": "url",
       "id": "button_link",
+      "label": "Enlace del botón",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "right_title",
+      "label": "Título Derecha",
+      "default": "\"✨ Una experiencia mágica desde el empaque.\""
+    },
+    {
+      "type": "text",
+      "id": "right_subtitle",
+      "label": "Subtítulo",
+      "default": "\"✨ Calidad, respeto y sensualidad.\""
+    },
+    {
+      "type": "text",
+      "id": "righ_button_label",
+      "label": "Texto del botón derecho ",
+      "default": "Explora ahora"
+    },
+    {
+      "type": "url",
+      "id": "right_button_link",
       "label": "Enlace del botón",
       "default": "/collections/all"
     }

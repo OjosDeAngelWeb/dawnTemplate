@@ -137,13 +137,18 @@
       "ads-hero": {
         "type": "ads-hero",
         "settings": {
+          "menu": "menu-categorias",
           "background": "shopify://shop_images/backgorund.png",
           "background_mobile": "shopify://shop_images/backgroundMobile.png",
           "box_image": "shopify://shop_images/Box.webp",
           "title": "Tu deseo también es luz. ✨",
           "subtitle": "Explora tu sensualidad desde lo más alto.",
           "button_label": "Descubre tu colección celestial",
-          "button_link": "shopify://collections/all"
+          "button_link": "shopify://collections/all",
+          "right_title": "\"✨ Una experiencia mágica desde el empaque.\"",
+          "right_subtitle": "\"✨ Calidad, respeto y sensualidad.\"",
+          "righ_button_label": "Explora ahora",
+          "right_button_link": "shopify://collections/all"
         }
       }
     },
