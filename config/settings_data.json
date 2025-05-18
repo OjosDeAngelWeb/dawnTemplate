@@ -133,6 +133,12 @@
         "settings": {
           "color_scheme": "scheme-1"
         }
+      },
+      "ads-hero": {
+        "type": "ads-hero",
+        "settings": {
+          "background": "shopify://shop_images/backgorund.png"
+        }
       }
     },
     "content_for_index": [],

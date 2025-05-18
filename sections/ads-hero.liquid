@@ -1,0 +1,57 @@
+<section class="ads-hero" style="background-image: url({{ section.settings.background | image_url }});">
+  <div class="ads-hero__content">
+    <h1 class="ads-hero__title">Tu deseo también es luz ✨</h1>
+    <p class="ads-hero__subtitle">Explora tu sensualidad con elegancia y magia</p>
+    <a href="/collections/all" class="ads-hero__button">Descubrir colección</a>
+  </div>
+</section>
+
+<style>
+  .ads-hero {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+  .ads-hero__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a0e13;
+  }
+  .ads-hero__subtitle {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    color: #4b2b34;
+  }
+  .ads-hero__button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    border-radius: 9999px;
+    background-color: #d1b18e;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Landing Hero",
+  "tag": "section",
+  "class": "section section-hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Imagen de fondo del cielo"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Hero"
+    }
+  ]
+}
+{% endschema %}
