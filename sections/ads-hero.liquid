@@ -27,14 +27,15 @@
 
 <style>
   .ads-hero {
-    background-image: url({{ section.settings.background | image_url }});
-    position: relative;
-    text-align: left;
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: left;
+    text-align: left;
+    padding: 3rem 2rem;
+    position: relative;
     overflow: hidden;
+    background: radial-gradient(circle at 30% 30%, #f6eaf1, #e8effc 40%, #e6e0f8 100%);
   }
 
   .ads-hero__content {
@@ -101,7 +102,6 @@
 
   @media screen and (max-width: 990px) {
     .ads-hero {
-      background-image: url({{ section.settings.background_mobile | image_url }});
       text-align: center;
       padding: 4rem 1.5rem;
     }
