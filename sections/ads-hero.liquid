@@ -1,21 +1,22 @@
 <section class="ads-hero">
-  <div class="ads-hero__layout">
-    <div class="ads-hero__header">
-      <div class="logo"></div>
-      <div class="menu_links">
-        {% assign collection = section.settings.menu.links %}
-        {% for subcollection in collection %}
-          <a href="{{ subcollection.url }}">
-            <h3 class="collection_link">{{ subcollection.title }}</h3>
-          </a>
-        {% endfor %}
-      </div>
+  <header class="ads-hero__header">
+    <div class="logo"></div>
+    <div class="menu_links">
+      {% assign collection = section.settings.menu.links %}
+      {% for subcollection in collection %}
+        <a href="{{ subcollection.url }}">
+          <h3 class="collection_link">{{ subcollection.title }}</h3>
+        </a>
+      {% endfor %}
     </div>
-    <div class="ads-hero__content">
-      <div class="ads-hero__left">
+  </header>
+  <main>
+    <div class="ads-hero__section">
+      <div class="contenido">
         <h1 class="ads-hero__title">
           {{ section.settings.title }}
         </h1>
+
         <p class="ads-hero__subtitle">
           {{ section.settings.subtitle }}
         </p>
@@ -26,20 +27,53 @@
           {{ section.settings.button_label }}
         </a>
       </div>
-      {%- if section.settings.box_image != blank -%}
-        <img
-          src="{{ section.settings.box_image | image_url }}"
-          width="20rem"
-          height="500rem"
-          alt="Caja celestial Ojos de Ángel"
-          class="ads-hero__box-bg"
-          loading="lazy"
-        >
-      {%- endif -%}
-      <div class="ads-hero__right">
-        <p class="ads-hero__title">
+    </div>
+    <div class="ads-hero__section">
+      <div class="center-container">
+        {%- if section.settings.box_image != blank -%}
+          <img
+            src="{{ section.settings.box_image | image_url }}"
+            width="130%"
+            height="auto"
+            alt="Caja celestial Ojos de Ángel"
+            class="ads-hero__box-bg"
+            loading="lazy"
+          >
+        {%- endif -%}
+        <div class="iconos-footer">
+          <div class="icono-item">
+            <span class="svg-wrapper">
+              {{- 'icon-shipment.svg' | inline_asset_content -}}
+            </span>
+            <p>{{ section.settings.icon_1_text }}</p>
+          </div>
+          <div class="icono-item">
+            <span class="svg-wrapper">
+              {{- 'icon-gift.svg' | inline_asset_content -}}
+            </span>
+            <p>{{ section.settings.icon_2_text }}</p>
+          </div>
+          <div class="icono-item">
+            <span class="svg-wrapper">
+              {{- 'icon-mysthic.svg' | inline_asset_content -}}
+            </span>
+            <p>{{ section.settings.icon_3_text }}</p>
+          </div>
+          <div class="icono-item">
+            <span class="svg-wrapper">
+              {{- 'icon-secure-card.svg' | inline_asset_content -}}
+            </span>
+            <p>{{ section.settings.icon_4_text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ads-hero__section">
+      <div class="contenido">
+        <p class="ads-hero__subtitle">
           {{ section.settings.right_title }}
         </p>
+
         <p class="ads-hero__subtitle">
           {{ section.settings.right_subtitle }}
         </p>
@@ -51,99 +85,93 @@
         </a>
       </div>
     </div>
-    <div class="ads-hero__benefits">
-      <div>
-        <img src="{{ 'icon-envio.svg' | asset_url }}" alt="Envío discreto">
-        <p>Envío discreto</p>
-      </div>
-      <div>
-        <img src="{{ 'icon-empaque.svg' | asset_url }}" alt="Empaque elegante">
-        <p>Empaque elegante</p>
-      </div>
-      <div>
-        <img src="{{ 'icon-seguro.svg' | asset_url }}" alt="Pago seguro">
-        <p>Paso seguro</p>
-      </div>
-    </div>
-  </div>
+  </main>
+  <footer></footer>
 </section>
-
 <style>
-  .ads-hero__layout {
-    display: table;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-
   .ads-hero {
-    height: 100vh;
+    height: 100%;
+    font-family: sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: left;
-    text-align: left;
-    padding: 3rem 2rem;
-    position: relative;
-    overflow: hidden;
+    flex-direction: column;
     background: radial-gradient(circle at 30% 30%, #f6eaf1, #e8effc 40%, #e6e0f8 100%);
   }
-
-  .ads-hero__content {
+  header,
+  footer {
+    height: 10vh;
     display: flex;
-    position: relative;
+    align-items: center;
     justify-content: center;
-    z-index: 2;
   }
 
-  .ads-hero__quotes {
-    flex: 1;
-    min-width: 250px;
-    color: #4c3a4f;
-    font-size: 1.1rem;
-    font-weight: 500;
+  main {
+    height: 80vh;
     display: flex;
-    z-index: 2;
+    overflow: hidden;
+  }
+
+  .ads-hero__section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .ads-hero__section .contenido {
+    padding: 2rem;
+    display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-width: 360px;
-  }
-
-  .ads-hero__benefits {
-    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: top;
-    gap: 3rem;
-    margin-top: 3rem;
-    z-index: 2;
+  }
+
+  .center-container {
     position: relative;
-  }
-
-  .ads-hero__right {
-    text-align: right;
-    z-index: 2;
-    position: relative;
-  }
-
-  .ads-hero__left {
-    text-align: left;
-    z-index: 2;
-    position: relative;
-  }
-
-  .ads-hero h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-
-  .ads-hero p {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    color: #4c3a4f;
-  }
-
-  .ads-hero__buttons {
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ads-hero__box-bg {
+    max-width: 80%;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .iconos-footer {
+    display: flex;
+    justify-content: space-between;
     gap: 1rem;
-    flex-wrap: wrap;
+    width: 100%;
+    padding: 1rem 2rem;
+    position: relative;
+    bottom: 0;
+  }
+
+  .icono-item {
+    flex: 1;
+    text-align: center;
+  }
+
+  .icono-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+  }
+
+  .icono-item p {
+    font-size: 0.9rem;
+    color: #333;
   }
 
   .ads-hero__button {
@@ -162,55 +190,46 @@
     background-color: #a67a8c;
   }
 
-  .ads-hero__image {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    max-width: 40%;
-    z-index: 1;
-    pointer-events: none;
+  .ads-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
 
-  .ads-hero__box-bg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 400px; /* antes era 500px */
-    max-height: 700px;
-    width: 90%;
-    z-index: 0;
-    opacity: 1;
-    pointer-events: none;
-  }
-
+  /* 🌐 Estilo mobile tipo app */
   @media screen and (max-width: 990px) {
-    .ads-hero {
-      text-align: center;
-      padding: 4rem 1.5rem;
+    header,
+    footer {
+      display: none; /* Ocultar header y footer en mobile */
     }
 
-    .adshero h1 {
-      font-size: 2rem;
+    body {
+      height: 100vh;
     }
 
-    .ads-hero p {
-      font-size: 1rem;
+    main {
+      flex: 1;
+      height: 100vh;
+      flex-direction: column;
+      overflow-y: auto; /* Scroll vertical */
     }
 
-    .ads-hero__image {
-      max-width: 70%;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 0;
+    .ads-hero__section {
+      flex: none;
+      width: 100%;
+      height: 100vh; /* Cada sección ocupa la pantalla completa */
     }
 
-    .ads-hero__buttons {
+    .iconos-footer {
+      flex-wrap: wrap;
       justify-content: center;
+      gap: 1rem;
     }
 
-    .ads-hero__box-bg {
-      max-width: 300px;
+    .icono-item {
+      width: 45%; /* Antes usábamos flex: 1 o width: 100% */
+      flex-basis: 45%;
     }
   }
 </style>
@@ -246,7 +265,7 @@
       "type": "text",
       "id": "title",
       "label": "Título",
-      "default": "Tu deseo también es luz. ✨"
+      "default": "Tu deseo también es luz"
     },
     {
       "type": "text",
@@ -270,13 +289,13 @@
       "type": "text",
       "id": "right_title",
       "label": "Título Derecha",
-      "default": "\"✨ Una experiencia mágica desde el empaque.\""
+      "default": "✨ \"Una experiencia mágica desde el empaque.\""
     },
     {
       "type": "text",
       "id": "right_subtitle",
       "label": "Subtítulo",
-      "default": "\"✨ Calidad, respeto y sensualidad.\""
+      "default": "✨ \"Calidad, respeto y sensualidad.\""
     },
     {
       "type": "text",
@@ -289,6 +308,30 @@
       "id": "right_button_link",
       "label": "Enlace del botón",
       "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "icon_1_text",
+      "label": "Texto Icono1",
+      "default": "Envio discreto"
+    },
+    {
+      "type": "text",
+      "id": "icon_2_text",
+      "label": "Texto Icono2",
+      "default": "Empaque elegante"
+    },
+    {
+      "type": "text",
+      "id": "icon_3_text",
+      "label": "Texto Icono3",
+      "default": "Energia mistica"
+    },
+    {
+      "type": "text",
+      "id": "icon_4_text",
+      "label": "Texto Icono4",
+      "default": "Pago seguro"
     }
   ],
   "presets": [
