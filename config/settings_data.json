@@ -140,15 +140,19 @@
           "menu": "menu-categorias",
           "background": "shopify://shop_images/backgorund.png",
           "background_mobile": "shopify://shop_images/backgroundMobile.png",
-          "box_image": "shopify://shop_images/Box.webp",
+          "box_image": "shopify://shop_images/new_box.webp",
           "title": "Tu deseo también es luz",
-          "subtitle": "Explora tu sensualidad desde lo más alto.",
+          "subtitle": "Explora tu sensualidad con elegancia y magia",
           "button_label": "Descubrir coleccion",
           "button_link": "shopify://collections/all",
           "right_title": "✨ \"Una experiencia mágica desde el empaque.\"",
           "right_subtitle": "✨ \"Calidad, respeto y sensualidad.\"",
           "righ_button_label": "Explora ahora",
-          "right_button_link": "shopify://collections/all"
+          "right_button_link": "shopify://collections/all",
+          "icon_1_text": "Envio discreto",
+          "icon_2_text": "Empaque elegante",
+          "icon_3_text": "Energia mistica",
+          "icon_4_text": "Pago seguro"
         }
       }
     },

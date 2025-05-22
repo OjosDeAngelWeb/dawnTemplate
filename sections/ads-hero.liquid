@@ -1,4 +1,4 @@
-<section class="ads-hero">
+<section class="ads-hero ">
   <header class="ads-hero__header">
     <div class="logo"></div>
     <div class="menu_links">
@@ -11,7 +11,7 @@
     </div>
   </header>
   <main>
-    <div class="ads-hero__section">
+    <div class="ads-hero__section z-index-1">
       <div class="contenido">
         <h1 class="ads-hero__title">
           {{ section.settings.title }}
@@ -28,12 +28,12 @@
         </a>
       </div>
     </div>
-    <div class="ads-hero__section">
+    <div class="ads-hero__section__center">
       <div class="center-container">
         {%- if section.settings.box_image != blank -%}
           <img
             src="{{ section.settings.box_image | image_url }}"
-            width="130%"
+            width="170%"
             height="auto"
             alt="Caja celestial Ojos de Ángel"
             class="ads-hero__box-bg"
@@ -68,7 +68,7 @@
         </div>
       </div>
     </div>
-    <div class="ads-hero__section">
+    <div class="ads-hero__section z-index-1">
       <div class="contenido">
         <p class="ads-hero__subtitle">
           {{ section.settings.right_title }}
@@ -96,11 +96,37 @@
   }
   .ads-hero {
     height: 100%;
-    font-family: sans-serif;
+    font-family: 'Georgia', serif;
     display: flex;
     flex-direction: column;
-    background: radial-gradient(circle at 30% 30%, #f6eaf1, #e8effc 40%, #e6e0f8 100%);
+    background: radial-gradient(circle at center, #f7e7e1 0%, #e5d9f2 40%, #e0f1f9 100%);
   }
+
+  .ads-hero {
+    background-size: 200% 200%;
+    background-repeat: no-repeat;
+    animation: floatClouds 5s ease-in-out infinite;
+  }
+
+  /* Animación de fondo */
+  @keyframes floatClouds {
+    0% {
+      background-position: 0% 0%;
+    }
+    25% {
+      background-position: 100% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    75% {
+      background-position: 0% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+
   header,
   footer {
     height: 10vh;
@@ -116,11 +142,24 @@
   }
 
   .ads-hero__section {
+    flex: 2;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .ads-hero__section__center {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+  }
+
+  .z-index-1 {
+    z-index: 1;
   }
 
   .ads-hero__section .contenido {
@@ -141,10 +180,12 @@
     justify-content: space-between;
     align-items: center;
   }
+
   .ads-hero__box-bg {
-    max-width: 80%;
+    max-width: none;
     margin-top: auto;
     margin-bottom: auto;
+    z-index: 0;
   }
 
   .iconos-footer {
@@ -162,7 +203,7 @@
     text-align: center;
   }
 
-  .icono-item img {
+  .svg-wrapper {
     width: 40px;
     height: 40px;
     object-fit: contain;
@@ -191,10 +232,24 @@
   }
 
   .ads-hero h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1.2;
+    font-size: 3.8rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #1a0e13;
+    letter-spacing: -0.02em;
     margin-bottom: 1rem;
+  }
+
+  .ads-hero__subtitle {
+    font-size: 2rem;
+    line-height: 1.1;
+    color: #1a0e13;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .icono-item p {
+    font-size: 1rem;
   }
 
   /* 🌐 Estilo mobile tipo app */
@@ -230,6 +285,20 @@
     .icono-item {
       width: 45%; /* Antes usábamos flex: 1 o width: 100% */
       flex-basis: 45%;
+    }
+
+    .ads-hero__box-bg {
+      max-width: 100%;
+      margin-top: auto;
+      margin-bottom: auto;
+      z-index: 0;
+    }
+
+    .svg-wrapper {
+      width: 50%;
+      height: 50%;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
     }
   }
 </style>
@@ -271,7 +340,7 @@
       "type": "text",
       "id": "subtitle",
       "label": "Subtítulo",
-      "default": "Explora tu sensualidad desde lo más alto."
+      "default": "Explora tu sensualidad con elegancia y magia"
     },
     {
       "type": "text",
