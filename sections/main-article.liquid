@@ -1,86 +1,58 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
 <article class="article-template">
-  {%- for block in section.blocks -%}
-    {%- case block.type -%}
-      {%- when '@app' -%}
-        <div class="page-width page-width--narrow">
-          {% render block %}
-        </div>
-      {%- when 'featured_image' -%}
-        {%- if article.image -%}
-          <div
-            class="article-template__hero-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
-            {{ block.shopify_attributes }}
-          >
-            <div
-              class="article-template__hero-{{ block.settings.image_height }} media"
-              {% if block.settings.image_height == 'adapt' and article.image %}
-                style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"
-              {% endif %}
+  <section class="ritual-sectio ">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'title' -%}
+          <div class="hero">
+            <h1>{{ article.title | escape }}</h1>
+            <img
+              srcset="
+                {% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
+                {% if article.image.width >= 750 %}{{ article.image | image_url: width: 750 }} 750w,{% endif %}
+                {% if article.image.width >= 1100 %}{{ article.image | image_url: width: 1100 }} 1100w,{% endif %}
+                {% if article.image.width >= 1500 %}{{ article.image | image_url: width: 1500 }} 1500w,{% endif %}
+                {% if article.image.width >= 2200 %}{{ article.image | image_url: width: 2200 }} 2200w,{% endif %}
+                {% if article.image.width >= 3000 %}{{ article.image | image_url: width: 3000 }} 3000w,{% endif %}
+                {{ article.image | image_url }} {{ article.image.width }}w
+              "
+              sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw"
+              src="{{ article.image | image_url: width: 1100 }}"
+              loading="eager"
+              fetchpriority="high"
+              width="{{ article.image.width }}"
+              height="{{ article.image.height }}"
+              alt="{{ article.image.alt | escape }}"
+              class="hero-image"
             >
-              <img
-                srcset="
-                  {% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
-                  {% if article.image.width >= 750 %}{{ article.image | image_url: width: 750 }} 750w,{% endif %}
-                  {% if article.image.width >= 1100 %}{{ article.image | image_url: width: 1100 }} 1100w,{% endif %}
-                  {% if article.image.width >= 1500 %}{{ article.image | image_url: width: 1500 }} 1500w,{% endif %}
-                  {% if article.image.width >= 2200 %}{{ article.image | image_url: width: 2200 }} 2200w,{% endif %}
-                  {% if article.image.width >= 3000 %}{{ article.image | image_url: width: 3000 }} 3000w,{% endif %}
-                  {{ article.image | image_url }} {{ article.image.width }}w
-                "
-                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw"
-                src="{{ article.image | image_url: width: 1100 }}"
-                loading="eager"
-                fetchpriority="high"
-                width="{{ article.image.width }}"
-                height="{{ article.image.height }}"
-                alt="{{ article.image.alt | escape }}"
-              >
+          </div>
+        {%- when 'content' -%}
+          <div class="blog-layout">
+            <aside class="sidebar">
+              <h3>Categorías</h3>
+              <ul class="category-list">
+                {% for tag in blog.all_tags %}
+                  <li>
+                    <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </aside>
+            <div class="rte article-body">
+              {{ article.content }}
             </div>
           </div>
-        {%- endif -%}
 
-      {%- when 'title' -%}
-        <header
-          class="page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
-          {{ block.shopify_attributes }}
-        >
-          <h1
-            class="article-template__title"
-          >
-            {{ article.title | escape }}
-          </h1>
-          {%- if block.settings.blog_show_date -%}
-            <span class="circle-divider caption-with-letter-spacing">
-              {{- article.published_at | time_tag: format: 'date' -}}
-            </span>
-          {%- endif -%}
-          {%- if block.settings.blog_show_author -%}
-            <span class="caption-with-letter-spacing">
-              <span>{{ article.author }}</span>
-            </span>
-          {%- endif -%}
-        </header>
-
-      {%- when 'content' -%}
-        <div
-          class="article-template__content page-width page-width--narrow rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {{ block.shopify_attributes }}
-        >
-          {{ article.content }}
-        </div>
-
-      {%- when 'share' -%}
-        <div
-          class="article-template__social-sharing page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {{ block.shopify_attributes }}
-        >
-          {% assign share_url = request.origin | append: article.url %}
-          {% render 'share-button', block: block, share_link: share_url %}
-        </div>
-    {%- endcase -%}
-  {%- endfor -%}
+          <div class="footer-blog">
+            <div class="footer-text">
+              <p class="like">¿Te gustó este artículo?</p>
+              <a href="#" class="button-more">Explorar más rituales de placer</a>
+            </div>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </section>
 
   <div class="article-template__back element-margin-top center{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
@@ -287,6 +259,207 @@
     </div>
   {%- endif -%}
 </article>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+    color: #1a0e13;
+    background: #fef6f9;
+  }
+
+  .blog-columns {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .left-column,
+  .right-column {
+    width: 50%;
+  }
+
+  .ritual-section {
+    background: linear-gradient(to bottom, #f7edf5, #fff6f9);
+    text-align: center;
+    padding-bottom: 4rem;
+  }
+
+  .hero {
+    background: #fce5f6;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.3;
+  }
+
+  .subhead {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    color: #333;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin-top: 2rem;
+    object-fit: cover;
+    opacity: 0.9;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem 3rem 2rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .text-column {
+    flex: 1;
+    text-align: left;
+    max-width: 600px;
+  }
+
+  .text-column p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .main-paragraph {
+    font-weight: bold;
+  }
+
+  .quote {
+    flex: 1;
+    text-align: left;
+    font-style: italic;
+    color: #b1811a;
+    font-size: 1.2rem;
+    max-width: 500px;
+    align-self: center;
+  }
+
+  .footer-blog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-image {
+    border-radius: 10px;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .footer-text {
+    text-align: left;
+  }
+
+  .like {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .button-more {
+    padding: 0.75rem 2rem;
+    background-color: #b481a6;
+    color: white;
+    border-radius: 999px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+
+  .button-more:hover {
+    background-color: #a86a8c;
+  }
+
+  .related {
+    font-size: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .article-template .rte {
+    column-count: 1;
+    column-gap: rem;
+    max-width: 50%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  @media (max-width: 990px) {
+    .article-template .rte {
+      column-count: 1;
+    }
+  }
+
+  .article-template .rte p,
+  h3 {
+    text-align: justify;
+  }
+
+  .blog-layout {
+    display: flex;
+    gap: 4rem;
+    padding: 2rem 4rem;
+    max-width: 1400px;
+    margin: auto;
+  }
+
+  .sidebar {
+    width: 25%;
+    padding: 2rem 1rem;
+    background-color: #fef6f9;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+  }
+
+  .sidebar h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #1a0e13;
+  }
+
+  .category-list {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .category-list li {
+    margin-bottom: 0.8rem;
+  }
+
+  .category-list a {
+    color: #b481a6;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .category-list a:hover {
+    text-decoration: underline;
+  }
+
+  .article-body {
+    flex: 1;
+    text-align: justify;
+    padding-top: 2rem;
+    max-width: 800px;
+  }
+</style>
 
 <script type="application/ld+json">
   {{ article | structured_data }}
