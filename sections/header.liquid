@@ -190,11 +190,36 @@
 
     .header__heading-logo-wrapper {
       max-width: 32px;
+      min-width: 32px;
     }
 
     .header__store-name .h2 {
       font-size: 1rem;
       font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .header__brand-container {
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .header__icons {
+      padding-right: 1rem; /* O usa gap si está en flex */
+    }
+
+    .header__icon {
+      margin-right: 0.25rem; /* Asegura espaciado interno entre iconos */
+    }
+
+    .header__inline-menu {
+      margin-right: auto;
+      padding-left: 0.75rem;
+    }
+
+    .header__wrapper {
+      gap: 0.5rem;
+      padding: 0 1rem;
     }
   }
 </style>
