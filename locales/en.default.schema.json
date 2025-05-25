@@ -884,7 +884,7 @@
         },
         "title": {
           "label": "Heading",
-          "default": "Pleasure Guide"
+          "default": "Guia para el placer"
         },
         "header_collection": {
           "content": "Collection layout"
@@ -1091,7 +1091,7 @@
         },
         "newsletter_heading": {
           "label": "Heading",
-          "default": "Stay in the know"
+          "default": "Mantenerme informado"
         },
         "header__1": {
           "content": "Email signup",
@@ -1323,7 +1323,7 @@
           "settings": {
             "text": {
               "label": "Text",
-              "default": "Explore our sensual sanctuary of celestial toys, erotic lingerie, and mystical costumes"
+              "default": "Explora nuestro santuario sensual de juguetes celestiales, lencería erótica y disfraces místicos."
             },
             "text_style": {
               "options__1": {
@@ -2665,7 +2665,7 @@
           "settings": {
             "heading": {
               "label": "Heading",
-              "default": "Stay in the know"
+              "default": "Mantenerme informado"
             }
           }
         },
