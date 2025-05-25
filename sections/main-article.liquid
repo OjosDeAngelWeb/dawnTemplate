@@ -25,9 +25,11 @@
               <h3>Categorías</h3>
               <ul class="category-list">
                 {% for tag in blog.all_tags %}
-                  <li>
-                    <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
-                  </li>
+                  {% unless tag contains 'frase:' %}
+                    <li>
+                      <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+                    </li>
+                  {% endunless %}
                 {% endfor %}
               </ul>
             </aside>
