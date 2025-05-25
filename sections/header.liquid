@@ -222,6 +222,92 @@
       padding: 0 1rem;
     }
   }
+
+  .header__categories-menu {
+    position: relative;
+    display: inline-block;
+  }
+
+  .categories-toggle {
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    color: #7c2d4a; /* tono vino elegante */
+    cursor: pointer;
+    padding: 10px 14px;
+  }
+
+  .categories-dropdown {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    min-width: 220px;
+    z-index: 1000;
+  }
+
+  .categories-dropdown.show {
+    display: block;
+  }
+
+  .categories-dropdown li {
+    list-style: none;
+  }
+
+  .categories-dropdown a {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    font-size: 15px;
+    transition: background 0.2s ease;
+  }
+
+  .categories-dropdown a:hover {
+    background-color: #f8f1f6;
+  }
+  @media screen and (max-width: 768px) {
+    .categories-dropdown {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  .product-categories {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .product-categories li {
+    margin-bottom: 0.75rem;
+  }
+
+  .product-categories a {
+    color: #77334b; /* color de tu marca */
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .header__blog-button {
+    background-color: #e6d1d9; /* rosa pastel */
+    color: #1a0e13; /* vino oscuro */
+    padding: 8px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s ease;
+  }
+
+  .header__blog-button:hover {
+    background-color: #dcb9c5;
+  }
 </style>
 
 {%- style -%}
@@ -354,6 +440,32 @@
       {%- endif -%}
     {%- endif -%}
 
+    <div class="header__categories-menu">
+      <button class="categories-toggle categories-btn" data-dropdown="categories-dropdown">Categorías</button>
+      {% assign categorias_menu = section.settings.menu %}
+      <ul id="categories-dropdown" class="categories-dropdown product-categories">
+        {% for link in categorias_menu.links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% if section.settings.blog_selector != blank %}
+      <div class="header__categories-menu">
+        <button class="categories-toggle categories-btn" data-dropdown="tags-dropdown">Blog</button>
+        <ul id="tags-dropdown" class="categories-dropdown product-categories">
+          {% assign mi_blog = blogs[section.settings.blog_selector] %}
+          {% for tag in mi_blog.all_tags %}
+            {% unless tag contains 'frase:' %}
+              <li>
+                <a href="{{ mi_blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+              </li>
+            {% endunless %}
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
     <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
       <div class="desktop-localization-wrapper">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
@@ -492,6 +604,38 @@
         {%- endif -%}
       </a>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const toggleButtons = document.querySelectorAll('.categories-btn');
+
+        function closeAllDropdowns() {
+          document.querySelectorAll('.categories-dropdown').forEach((drop) => drop.classList.remove('show'));
+        }
+
+        toggleButtons.forEach((button) => {
+          const dropdownId = button.dataset.dropdown;
+          const dropdown = document.getElementById(dropdownId);
+
+          button.addEventListener('click', function (e) {
+            e.stopPropagation();
+
+            const isVisible = dropdown.classList.contains('show');
+            closeAllDropdowns();
+
+            if (!isVisible) {
+              dropdown.classList.add('show');
+            }
+          });
+        });
+
+        // Cierra dropdown si haces clic fuera
+        document.addEventListener('click', function (e) {
+          if (!e.target.closest('.header__categories-menu')) {
+            closeAllDropdowns();
+          }
+        });
+      });
+    </script>
   </header>
 </{{ header_tag }}>
 
@@ -836,6 +980,11 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 12
+    },
+    {
+      "type": "blog",
+      "id": "blog_selector",
+      "label": "Selecciona tu blog"
     }
   ],
   "blocks": [
