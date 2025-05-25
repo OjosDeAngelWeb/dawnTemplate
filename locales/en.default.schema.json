@@ -1745,6 +1745,9 @@
         "content": {
           "name": "Content"
         },
+        "content-right": {
+          "name": "Content right"
+        },
         "share": {
           "name": "Share",
           "settings": {

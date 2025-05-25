@@ -1,28 +1,20 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
 <article class="article-template">
-  <section class="ritual-sectio ">
+  <section class="ritual-section">
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when 'title' -%}
           <div class="hero">
             <h1>{{ article.title | escape }}</h1>
             <img
-              srcset="
-                {% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
-                {% if article.image.width >= 750 %}{{ article.image | image_url: width: 750 }} 750w,{% endif %}
-                {% if article.image.width >= 1100 %}{{ article.image | image_url: width: 1100 }} 1100w,{% endif %}
-                {% if article.image.width >= 1500 %}{{ article.image | image_url: width: 1500 }} 1500w,{% endif %}
-                {% if article.image.width >= 2200 %}{{ article.image | image_url: width: 2200 }} 2200w,{% endif %}
-                {% if article.image.width >= 3000 %}{{ article.image | image_url: width: 3000 }} 3000w,{% endif %}
-                {{ article.image | image_url }} {{ article.image.width }}w
-              "
+              srcset="{{ article.image | image_url: width: 350 }}"
               sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw"
               src="{{ article.image | image_url: width: 1100 }}"
               loading="eager"
               fetchpriority="high"
-              width="{{ article.image.width }}"
-              height="{{ article.image.height }}"
+              width="500"
+              height="500"
               alt="{{ article.image.alt | escape }}"
               class="hero-image"
             >
@@ -39,19 +31,98 @@
                 {% endfor %}
               </ul>
             </aside>
-            <div class="rte article-body">
-              {{ article.content }}
+            <div class="article-body-with-right">
+              <div class="rte article-body">
+                {{ article.content }}
+              </div>
             </div>
-          </div>
+            <aside class="right-column">
+              {% assign frase_tag = '' %}
+              {% for tag in article.tags %}
+                {% if tag contains 'frase:' %}
+                  {% assign frase_tag = tag | remove: 'frase:' | strip %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+              {% if frase_tag != '' %}
+                {% assign frase = frase_tag | remove: 'frase:' %}
+                <div class="sidebar-quote">
+                  <blockquote>
+                    <span class="quote-icon">✨</span>
+                    <p>{{ frase }}</p>
+                  </blockquote>
+                </div>
+              {% endif %}
 
-          <div class="footer-blog">
-            <div class="footer-text">
-              <p class="like">¿Te gustó este artículo?</p>
-              <a href="#" class="button-more">Explorar más rituales de placer</a>
-            </div>
+              <div class="blog-featured-products">
+                {% for product in collections.lenceria.products limit: 2 %}
+                  <div class="blog-product-card">
+                    <a href="{{ product.url }}">
+                      <img
+                        src="{{ product.featured_image | image_url: width: 300 }}"
+                        alt="{{ product.title }}"
+                        width="300"
+                        height="300"
+                      >
+                      <p class="product-title">{{ product.title }}</p>
+                    </a>
+                  </div>
+                {% endfor %}
+              </div>
+
+              <div class="newsletter-box">
+                <p class="newsletter-text">¿Te gustó este artículo?</p>
+                <a href="/pages/suscripcion" class="subscribe-button">Recibe más placer celestial ✨</a>
+              </div>
+            </aside>
           </div>
       {%- endcase -%}
     {%- endfor -%}
+
+    {% assign articles = blog.articles %}
+    {% assign current_article_index = -1 %}
+
+    {% for a in articles %}
+      {% if a.id == article.id %}
+        {% assign current_article_index = forloop.index0 %}
+      {% endif %}
+    {% endfor %}
+
+    <div class="blog-navigation-cards">
+      {% if current_article_index > 0 %}
+        {% assign previous_index = current_article_index | minus: 1 %}
+        {% assign previous_article = articles[previous_index] %}
+        <a href="{{ previous_article.url }}" class="blog-nav-compact-card">
+          <div class="nav-image-wrapper">
+            <img
+              src="{{ previous_article.image | image_url: width: 400 }}"
+              alt="{{ previous_article.title }}"
+              width="400"
+              height="400"
+            >
+          </div>
+          <span class="nav-label">← Artículo anterior</span>
+          <h4>{{ previous_article.title }}</h4>
+        </a>
+      {% endif %}
+
+      {% assign next_index = current_article_index | plus: 1 %}
+      {% if next_index < articles.size %}
+        {% assign next_article = articles[next_index] %}
+        <a href="{{ next_article.url }}" class="blog-nav-compact-card">
+          <div class="nav-image-wrapper">
+            <img
+              src="{{ next_article.image | image_url: width: 400 }}"
+              alt="{{ next_article.title }}"
+              width="400"
+              height="400"
+            >
+          </div>
+          <span class="nav-label">Artículo siguiente →</span>
+          <h4>{{ next_article.title }}</h4>
+        </a>
+      {% endif %}
+    </div>
   </section>
 
   <div class="article-template__back element-margin-top center{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -71,7 +142,7 @@
         class="page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
       >
         {%- if article.comments_count > 0 -%}
-          {%- assign anchorId = '#Comments-' | append: article.id -%}
+          {%- assign anchor_id = '#Comments-' | append: article.id -%}
 
           <h2 id="Comments-{{ article.id }}" tabindex="-1">
             {{ 'blogs.article.comments' | t: count: article.comments_count }}
@@ -98,7 +169,7 @@
                   </footer>
                 </article>
               {%- endfor -%}
-              {% render 'pagination', paginate: paginate, anchor: anchorId %}
+              {% render 'pagination', paginate: paginate, anchor: anchor_id %}
             </div>
           {% endpaginate %}
         {%- endif -%}
@@ -288,11 +359,12 @@
   .hero {
     background: #fce5f6;
     position: relative;
+    text-align: center;
   }
 
   .hero h1 {
     font-size: 2.5rem;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     line-height: 1.3;
   }
@@ -304,12 +376,13 @@
   }
 
   .hero-image {
-    width: 100%;
+    max-height: 500px;
+    width: auto;
     height: auto;
-    max-width: 100%;
+    max-width: 90vw;
     display: block;
-    margin-top: 2rem;
-    object-fit: cover;
+    margin: 2rem auto;
+    object-fit: contain;
     opacity: 0.9;
   }
 
@@ -395,15 +468,19 @@
 
   .article-template .rte {
     column-count: 1;
-    column-gap: rem;
-    max-width: 50%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     overflow-wrap: break-word;
     word-break: break-word;
+    text-align: justify;
   }
 
   @media (max-width: 990px) {
     .article-template .rte {
       column-count: 1;
+      max-width: 95%;
+      padding: 0 1rem;
     }
   }
 
@@ -418,6 +495,7 @@
     padding: 2rem 4rem;
     max-width: 1400px;
     margin: auto;
+    flex-direction: row;
   }
 
   .sidebar {
@@ -458,6 +536,233 @@
     text-align: justify;
     padding-top: 2rem;
     max-width: 800px;
+  }
+
+  .article-body-with-right {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    width: 100%;
+  }
+
+  .right-column {
+    width: 30%;
+    background-color: #fbf5fa;
+    border-left: 1px solid #eee;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .blog-quote {
+    font-style: italic;
+    color: #94516a;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .blog-featured-products {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .blog-product-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    border: 1px solid #f2d6e0;
+    transition: transform 0.2s ease;
+  }
+
+  .blog-product-card img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 0.5rem auto;
+    border-radius: 1rem;
+  }
+
+  .blog-product-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .product-title {
+    color: #1a0e13;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .newsletter-box {
+    background-color: #f2e8ec;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+  }
+
+  .subscribe-button {
+    display: inline-block;
+    margin-top: 0.5rem;
+    background: #b481a6;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .quote-icon {
+    font-size: 1.25rem;
+    color: #dabfa9;
+    margin-right: 0.5rem;
+  }
+
+  @media (max-width: 990px) {
+    .blog-layout {
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .sidebar {
+      width: 100%;
+      order: 0;
+    }
+
+    .article-body-with-right {
+      flex-direction: column;
+      order: -1;
+    }
+
+    .article-body {
+      max-width: 100%;
+      padding: 1rem 0;
+    }
+
+    .right-column {
+      width: 100%;
+      padding: 1rem 0;
+      border-left: none;
+      border-top: 1px solid #eee;
+    }
+  }
+
+  main#MainContent {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .hero {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .ritual-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .blog-navigation-cards {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 4rem;
+    padding: 2rem 1rem;
+    border-top: 1px solid #f2d6e0;
+    flex-wrap: wrap;
+  }
+
+  .blog-nav-compact-card {
+    width: 200px;
+    height: 250px; /* ← Establece altura fija */
+    background-color: #fce5f6;
+    border-radius: 1rem;
+    text-align: center;
+    text-decoration: none;
+    color: #1a0e13;
+    padding: 1rem;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 1rem;
+  }
+
+  .blog-nav-compact-card:hover {
+    background-color: #f2c8d9;
+  }
+
+  .blog-nav-compact-card img {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-nav-compact-card .nav-label {
+    font-size: 1.5rem;
+    color: #94516a;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .blog-nav-compact-card h4 {
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.4;
+    font-weight: 600;
+    max-height: 4.2em; /* evita que se salga */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* máximo 3 líneas */
+    -webkit-box-orient: vertical;
+  }
+
+  .nav-image-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .nav-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 990px) {
+    .blog-navigation {
+      flex-direction: column;
+    }
+
+    .blog-nav-card {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 990px) {
+    .blog-navigation-cards {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 2rem;
+    }
+
+    .blog-nav-compact-card {
+      max-width: 100%;
+      text-align: center !important;
+      align-self: center !important;
+    }
   }
 </style>
 
