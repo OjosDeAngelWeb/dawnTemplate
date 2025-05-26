@@ -457,7 +457,7 @@
         <ul id="tags-dropdown" class="categories-dropdown product-categories">
           {% assign mi_blog = blogs[section.settings.blog_selector] %}
           {% for tag in mi_blog.all_tags %}
-            {% unless tag contains 'frase:' %}
+            {% unless tag contains ':' %}
               <li>
                 <a href="{{ mi_blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
               </li>
