@@ -25,7 +25,7 @@
               <h3>Categorías</h3>
               <ul class="category-list">
                 {% for tag in blog.all_tags %}
-                  {% unless tag contains 'frase:' %}
+                  {% unless tag contains ':' %}
                     <li>
                       <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
                     </li>
@@ -40,10 +40,14 @@
             </div>
             <aside class="right-column">
               {% assign frase_tag = '' %}
+              {% assign collection_name = 'frontpage' %}
               {% for tag in article.tags %}
                 {% if tag contains 'frase:' %}
                   {% assign frase_tag = tag | remove: 'frase:' | strip %}
-                  {% break %}
+                {% endif %}
+                {% if tag contains 'blog:' %}
+                  {% assign blog_tag = tag | remove: 'blog:' | strip %}
+                  {% assign collection_name = 'blog-' | append: blog_tag %}
                 {% endif %}
               {% endfor %}
               {% if frase_tag != '' %}
@@ -55,9 +59,8 @@
                   </blockquote>
                 </div>
               {% endif %}
-
               <div class="blog-featured-products">
-                {% for product in collections.lenceria.products limit: 2 %}
+                {% for product in collections[collection_name].products limit: 2 %}
                   <div class="blog-product-card">
                     <a href="{{ product.url }}">
                       <img
@@ -73,12 +76,12 @@
               </div>
               <!--
                 <div class="newsletter-box">
-                      <p class="newsletter-text">¿Te gustó este artículo?</p>
-                      <a href="/pages/suscripcion" class="subscribe-button">Recibe más placer celestial ✨</a>
-                    </div>
-                  </aside>
+                  <p class="newsletter-text">¿Te gustó este artículo?</p>
+                  <a href="/pages/suscripcion" class="subscribe-button">Recibe más placer celestial ✨</a>
                 </div>
               -->
+            </aside>
+          </div>
       {%- endcase -%}
     {%- endfor -%}
 
