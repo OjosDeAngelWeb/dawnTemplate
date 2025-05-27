@@ -63,7 +63,7 @@
       "settings": {
         "collection": "all",
         "products_to_show": 3,
-        "title": "Featured",
+        "title": "Destacados",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
