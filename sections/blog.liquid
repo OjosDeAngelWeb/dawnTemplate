@@ -3,9 +3,12 @@
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width section-{{ section.id }}-padding">
     {% if section.settings.title != blank %}
-      <h2 class="{{ section.settings.heading_size }} text-[#1a0e13] font-bold tracking-[-0.015em] mb-12 text-center">
+      <h2 class="{{ section.settings.heading_size }} custom-blog-title text-center">
         {{ section.settings.title }}
       </h2>
+      <p class="custom-blog-subtitle">
+        {{ section.settings.subtitle }}
+      </p>
     {% endif %}
     {% assign articles = blogs[section.settings.blog].articles | slice: 0, section.settings.items_to_show %}
     {% if section.settings.blog != blank %}
@@ -39,6 +42,22 @@
 </div>
 
 <style>
+  .custom-blog-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 2.75rem;
+    color: #4b2273;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+  .custom-blog-subtitle {
+    font-size: 1.8rem;
+    color: #5e2a84;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -155,6 +174,12 @@
       "id": "title",
       "default": "t:sections.categories.settings.title.default",
       "label": "t:sections.categories.settings.title.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subtitle",
+      "default": "t:sections.categories.settings.subtitle.default",
+      "label": "t:sections.categories.settings.subtitle.label"
     },
     {
       "type": "select",

@@ -884,7 +884,11 @@
         },
         "title": {
           "label": "Heading",
-          "default": "Guia para el placer"
+          "default": "📚 Guías de Ojos de Ángel"
+        },
+        "subtitle": {
+          "label": "Heading",
+          "default": "Aprende, explora y transforma tu placer."
         },
         "header_collection": {
           "content": "Collection layout"
