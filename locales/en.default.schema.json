@@ -1091,7 +1091,11 @@
         },
         "newsletter_heading": {
           "label": "Heading",
-          "default": "Mantenerme informado"
+          "default": "Sé parte del ritual "
+        },
+        "newsletter_subheading": {
+          "label": "Heading",
+          "default": "Recibe inspiración, placer y contenido sagrado en tu correo "
         },
         "header__1": {
           "content": "Email signup",
@@ -2665,7 +2669,7 @@
           "settings": {
             "heading": {
               "label": "Heading",
-              "default": "Mantenerme informado"
+              "default": "Sé parte del ritual "
             }
           }
         },
