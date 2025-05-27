@@ -42,7 +42,9 @@
         "share",
         "content"
       ],
-      "settings": {}
+      "settings": {
+        "menu_blog": "blogs"
+      }
     }
   },
   "order": [

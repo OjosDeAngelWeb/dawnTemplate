@@ -24,12 +24,10 @@
             <aside class="sidebar">
               <h3>Categorías</h3>
               <ul class="category-list">
-                {% for tag in blog.all_tags %}
-                  {% unless tag contains ':' %}
-                    <li>
-                      <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
-                    </li>
-                  {% endunless %}
+                {% for link in section.settings.menu_blog.links %}
+                  <li>
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
                 {% endfor %}
               </ul>
             </aside>
@@ -781,6 +779,13 @@
   "name": "t:sections.main-article.name",
   "tag": "section",
   "class": "section",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu_blog",
+      "label": "Selecciona un menú para el blog"
+    }
+  ],
   "blocks": [
     {
       "type": "@app"

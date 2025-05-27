@@ -13,6 +13,17 @@
   "sections": {
     "header": {
       "type": "header",
+      "blocks": {
+        "blog_menu_TpNe7J": {
+          "type": "blog_menu",
+          "settings": {
+            "menu_blog": "blogs"
+          }
+        }
+      },
+      "block_order": [
+        "blog_menu_TpNe7J"
+      ],
       "settings": {
         "logo_position": "middle-left",
         "mobile_logo_position": "center",

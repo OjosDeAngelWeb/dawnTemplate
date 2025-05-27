@@ -455,13 +455,14 @@
       <div class="header__categories-menu">
         <button class="categories-toggle categories-btn" data-dropdown="tags-dropdown">Blog</button>
         <ul id="tags-dropdown" class="categories-dropdown product-categories">
-          {% assign mi_blog = blogs[section.settings.blog_selector] %}
-          {% for tag in mi_blog.all_tags %}
-            {% unless tag contains ':' %}
-              <li>
-                <a href="{{ mi_blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
-              </li>
-            {% endunless %}
+          {% for block in section.blocks %}
+            {% if block.type == 'blog_menu' and linklists[block.settings.menu_blog] %}
+              {% for link in linklists[block.settings.menu_blog].links %}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            {% endif %}
           {% endfor %}
         </ul>
       </div>
@@ -803,7 +804,6 @@
 {
   "name": "t:sections.header.name",
   "class": "section-header",
-  "max_blocks": 3,
   "settings": [
     {
       "type": "select",
@@ -990,7 +990,19 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "blog_menu",
+      "name": "Menú del blog",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu_blog",
+          "label": "Selecciona un menú para el blog"
+        }
+      ]
     }
-  ]
+  ],
+  "max_blocks": 5
 }
 {% endschema %}
