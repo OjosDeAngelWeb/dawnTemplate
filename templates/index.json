@@ -89,7 +89,7 @@
     "categories": {
       "type": "categories",
       "settings": {
-        "menu": "menu-categorias",
+        "menu": "categorias-home",
         "items_to_show": 3,
         "title": "",
         "heading_size": "h2",
