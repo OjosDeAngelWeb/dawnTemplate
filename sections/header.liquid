@@ -441,7 +441,7 @@
     {%- endif -%}
 
     <div class="header__categories-menu">
-      <button class="categories-toggle categories-btn" data-dropdown="categories-dropdown">Productos</button>
+      <button class="categories-toggle categories-btn" data-dropdown="categories-dropdown">Tienda Celestial</button>
       {% assign categorias_menu = section.settings.menu %}
       <ul id="categories-dropdown" class="categories-dropdown product-categories">
         {% for link in categorias_menu.links %}
@@ -453,7 +453,7 @@
     </div>
     {% if section.settings.blog_selector != blank %}
       <div class="header__categories-menu">
-        <button class="categories-toggle categories-btn" data-dropdown="tags-dropdown">Blog</button>
+        <button class="categories-toggle categories-btn" data-dropdown="tags-dropdown">Blog Rituales y consejos</button>
         <ul id="tags-dropdown" class="categories-dropdown product-categories">
           {% for block in section.blocks %}
             {% if block.type == 'blog_menu' and linklists[block.settings.menu_blog] %}
