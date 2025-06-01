@@ -38,14 +38,10 @@
             </div>
             <aside class="right-column">
               {% assign frase_tag = '' %}
-              {% assign collection_name = 'frontpage' %}
+              {% assign collection_products = collections.frontpage.products %}
               {% for tag in article.tags %}
                 {% if tag contains 'frase:' %}
                   {% assign frase_tag = tag | remove: 'frase:' | strip %}
-                {% endif %}
-                {% if tag contains 'blog:' %}
-                  {% assign blog_tag = tag | remove: 'blog:' | strip %}
-                  {% assign collection_name = 'blog-' | append: blog_tag %}
                 {% endif %}
               {% endfor %}
               {% if frase_tag != '' %}
@@ -57,8 +53,11 @@
                   </blockquote>
                 </div>
               {% endif %}
+              {% if article.metafields.custom.productos != blank %}
+                {% assign collection_products = article.metafields.custom.productos.value %}
+              {% endif %}
               <div class="blog-featured-products">
-                {% for product in collections[collection_name].products limit: 2 %}
+                {% for product in collection_products limit: 3 %}
                   <div class="blog-product-card">
                     <a href="{{ product.url }}">
                       <img
