@@ -160,8 +160,15 @@
         "settings": {
           "about": "Acerca de Ojos de Ángel",
           "title": "Un espacio donde el placer tiene alma",
-          "mision_title": "Nuestra misión",
-          "mision_description": "<p>Acompañarte en tu camino hacia un bienestar íntimo y emocional, a través de productos eróticos cuidadosamente seleccionados, que integran sensualidad, conciencia y espiritualidad. </p><p>En Ojos de Ángel, promovemos una sexualidad libre, respetuosa y empoderadora, en armonía con el amor propio y la conexión auténtica. </p>"
+          "description": "<p> <strong>Ojos de Ángel no es un sex shop cualquiera.</strong><br/>Es un espacio sagrado, una puerta entre el cuerpo y el alma, donde la sensualidad se honra como un acto de amor propio, de libertad y de conexión con lo divino.</p><p>Nacimos del deseo profundo de transformar la forma en que vivimos la sexualidad:<br/>de quitarle el miedo, la culpa y el tabú,<br/>para devolverle la belleza, la presencia y la intención.</p><p>Creemos que el placer no es pecado.<br/>Es un lenguaje del alma, una medicina para el cuerpo, un derecho que merece ser vivido sin vergüenza.</p><p>Aquí, el deseo se celebra.<br/>El cuerpo se cuida.<br/>Y cada producto, cada palabra, cada experiencia, es una invitación a explorar(te) con verdad.</p>",
+          "mision_title": "🌟 Nuestra misión",
+          "mision_description": "<p>Acompañarte en tu camino hacia un bienestar íntimo y emocional, a través de productos eróticos cuidadosamente seleccionados, que integran sensualidad, conciencia y espiritualidad. </p><p>En Ojos de Ángel, promovemos una sexualidad libre, respetuosa y empoderadora, en armonía con el amor propio y la conexión auténtica. </p>",
+          "vision_title": "🚀 Nuestra visión",
+          "vision_description": "<p> Soñamos con un mundo donde la sexualidad se viva como lo que realmente es:<br/>una energía poderosa, inclusiva y transformadora.</p><p>Queremos ser la marca hispana referente en placer consciente,<br/>donde cada persona, sin importar cómo ame o se identifique, encuentre un espacio seguro para sentir, explorar y expandirse.</p>",
+          "pilares_title": "Nuestros pilares",
+          "pilares_description": "<p> </p>",
+          "end_title": "Bienvenida a Ojos de Ángel",
+          "end_description": "<p> </p>"
         }
       }
     },
