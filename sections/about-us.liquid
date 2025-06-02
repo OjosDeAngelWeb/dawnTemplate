@@ -1,0 +1,270 @@
+<section class="about">
+  <div class="container">
+    <div class="about-header">
+      <p class="eyebrow">✨ {{ section.settings.about }}</p>
+      <h1 class="title">
+        <span class="icon">✨</span>
+        {{ section.settings.title }}
+      </h1>
+    </div>
+
+    <div class="about-description">
+      {{ section.settings.description }}
+    </div>
+    <div class="mision-section">
+      <h2 class="subtitle">{{ section.settings.mision_title }}</h2>
+      {{ section.settings.mision_description }}
+    </div>
+    <div class="vision-section">
+      <h2 class="subtitle">{{ section.settings.vision_title }}</h2>
+      {{ section.settings.vision_description }}
+    </div>
+
+    <div class="about-pillars">
+      <h2 class="subtitle">Nuestros pilares</h2>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <h3>🧘‍♀️ Bienestar integral</h3>
+          <p>El placer que ofrecemos honra cuerpo, mente y emociones.</p>
+        </div>
+        <div class="pillar">
+          <h3>🎵 Empoderamiento</h3>
+          <p>Celebramos el amor propio, la autonomía y la exploración libre.</p>
+        </div>
+        <div class="pillar">
+          <h3>🌈 Inclusión</h3>
+          <p>Este cielo es para todxs: todas las identidades, todas las formas de amar.</p>
+        </div>
+        <div class="pillar">
+          <h3>✨ Estética y excelencia</h3>
+          <p>Productos bellos, funcionales y cuidadosamente elegidos.</p>
+        </div>
+        <div class="pillar">
+          <h3>🌙 Espiritualidad erótica</h3>
+          <p>Reconocemos el deseo como una fuerza sagrada y creadora.</p>
+        </div>
+        <div class="pillar">
+          <h3>🌀 Coherencia y cuidado</h3>
+          <p>Nos guiamos con verdad, respeto y responsabilidad en cada acción.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cierre -->
+    <div class="about-closing">
+      <h2 class="subtitle">{{ section.settings.end_title }}</h2>
+      {{ section.settings.end_description }}
+    </div>
+  </div>
+</section>
+<style>
+  body {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfaf6;
+  }
+
+  .about {
+    background-color: #fdfaf6;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    background-color: #fdfaf6;
+  }
+
+  .about-header {
+    margin-bottom: 2rem;
+  }
+
+  .eyebrow {
+    color: #d6b27d;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0 0;
+    line-height: 1.2;
+    color: #4b2169;
+  }
+
+  .title .icon {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .about-description {
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    font-size: 1.8rem;
+    color: #5c5263;
+  }
+
+  .about-description p {
+    margin-bottom: 1.2rem;
+  }
+
+  .about-description strong {
+    color: #4b2169;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+    color: #4b2169;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+    background-color: #fdfaf6; /* fondo crema */
+    padding: 2rem;
+    border-radius: 24px;
+    box-shadow: 0 0 30px rgba(200, 180, 255, 0.1);
+  }
+
+  .pillar {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 0 12px rgba(180, 160, 255, 0.08);
+    border: 1px solid rgba(240, 230, 255, 0.6);
+    transition: transform 0.2s ease;
+  }
+
+  .pillar:hover {
+    transform: translateY(-3px);
+  }
+
+  .pillar h3 {
+    font-family: 'Georgia', serif;
+    font-size: 1.7rem;
+    color: #4b2169;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .pillar p {
+    color: #4b2169;
+    font-size: 1.7rem;
+    line-height: 1.5;
+  }
+
+  .about-closing {
+    margin-top: 2.5rem;
+  }
+
+  .about-closing p {
+    font-size: 1.7rem;
+    line-height: 1.6;
+    color: #5c5263;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .title {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About Us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "about",
+      "default": "Acerca de Ojos de Ángel",
+      "label": "Acerca de"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Un espacio donde el placer tiene alma",
+      "label": "Titulo"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p> </p>",
+      "label": "Descripción"
+    },
+    {
+      "type": "text",
+      "id": "mision_title",
+      "default": "Nuestra misión",
+      "label": "Misión titulo"
+    },
+    {
+      "type": "richtext",
+      "id": "mision_description",
+      "default": "<p> </p>",
+      "label": "Misión descripción"
+    },
+    {
+      "type": "text",
+      "id": "vision_title",
+      "default": "Nuestra visión",
+      "label": "Visión titulo"
+    },
+    {
+      "type": "richtext",
+      "id": "vision_description",
+      "default": "<p> </p>",
+      "label": "Visión descripción"
+    },
+    {
+      "type": "text",
+      "id": "pilares_title",
+      "default": "Nuestros pilares",
+      "label": "Pilares titulo"
+    },
+    {
+      "type": "richtext",
+      "id": "pilares_description",
+      "default": "<p> </p>",
+      "label": "Pilares descripción"
+    },
+    {
+      "type": "text",
+      "id": "end_title",
+      "default": "Bienvenida a Ojos de Ángel",
+      "label": "Cierre titulo"
+    },
+    {
+      "type": "richtext",
+      "id": "end_description",
+      "default": "<p> </p>",
+      "label": "Cierre descripción"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "About Us"
+    }
+  ]
+}
+{% endschema %}

@@ -154,6 +154,15 @@
           "icon_3_text": "Energia mistica",
           "icon_4_text": "Pago seguro"
         }
+      },
+      "about-us": {
+        "type": "about-us",
+        "settings": {
+          "about": "Acerca de Ojos de Ángel",
+          "title": "Un espacio donde el placer tiene alma",
+          "mision_title": "Nuestra misión",
+          "mision_description": "<p>Acompañarte en tu camino hacia un bienestar íntimo y emocional, a través de productos eróticos cuidadosamente seleccionados, que integran sensualidad, conciencia y espiritualidad. </p><p>En Ojos de Ángel, promovemos una sexualidad libre, respetuosa y empoderadora, en armonía con el amor propio y la conexión auténtica. </p>"
+        }
       }
     },
     "content_for_index": [],
