@@ -21,32 +21,14 @@
     </div>
 
     <div class="about-pillars">
-      <h2 class="subtitle">Nuestros pilares</h2>
+      <h2 class="subtitle">{{ section.settings.pilares_title }}</h2>
       <div class="pillars-grid">
-        <div class="pillar">
-          <h3>🧘‍♀️ Bienestar integral</h3>
-          <p>El placer que ofrecemos honra cuerpo, mente y emociones.</p>
-        </div>
-        <div class="pillar">
-          <h3>🎵 Empoderamiento</h3>
-          <p>Celebramos el amor propio, la autonomía y la exploración libre.</p>
-        </div>
-        <div class="pillar">
-          <h3>🌈 Inclusión</h3>
-          <p>Este cielo es para todxs: todas las identidades, todas las formas de amar.</p>
-        </div>
-        <div class="pillar">
-          <h3>✨ Estética y excelencia</h3>
-          <p>Productos bellos, funcionales y cuidadosamente elegidos.</p>
-        </div>
-        <div class="pillar">
-          <h3>🌙 Espiritualidad erótica</h3>
-          <p>Reconocemos el deseo como una fuerza sagrada y creadora.</p>
-        </div>
-        <div class="pillar">
-          <h3>🌀 Coherencia y cuidado</h3>
-          <p>Nos guiamos con verdad, respeto y responsabilidad en cada acción.</p>
-        </div>
+        {% for block in section.blocks %}
+          <div class="pillar">
+            <h3>{{ block.settings.titulo }}</h3>
+            <p>{{ block.settings.descripcion }}</p>
+          </div>
+        {% endfor %}
       </div>
     </div>
 
@@ -242,12 +224,6 @@
       "label": "Pilares titulo"
     },
     {
-      "type": "richtext",
-      "id": "pilares_description",
-      "default": "<p> </p>",
-      "label": "Pilares descripción"
-    },
-    {
       "type": "text",
       "id": "end_title",
       "default": "Bienvenida a Ojos de Ángel",
@@ -260,7 +236,25 @@
       "label": "Cierre descripción"
     }
   ],
-  "blocks": [],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pilar",
+      "settings": [
+        {
+          "type": "text",
+          "id": "titulo",
+          "label": "Título del pilar"
+        },
+        {
+          "type": "textarea",
+          "id": "descripcion",
+          "label": "Descripción del pilar"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
   "presets": [
     {
       "name": "About Us"

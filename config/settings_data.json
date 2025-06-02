@@ -157,6 +157,64 @@
       },
       "about-us": {
         "type": "about-us",
+        "blocks": {
+          "pillar_H67Dmz": {
+            "type": "pillar",
+            "name": "Bienestar",
+            "settings": {
+              "titulo": "🌱 Bienestar integral",
+              "descripcion": "El placer que ofrecemos honra cuerpo, mente y emociones."
+            }
+          },
+          "pillar_FCbK8k": {
+            "type": "pillar",
+            "name": "Empoderamiento",
+            "settings": {
+              "titulo": "🔥&nbsp;Empoderamiento&nbsp;",
+              "descripcion": "Celebramos el amor propio, la autonomía y la exploración libre."
+            }
+          },
+          "pillar_3UU7WU": {
+            "type": "pillar",
+            "name": "Inclusion",
+            "settings": {
+              "titulo": "🌈&nbsp;Inclusión&nbsp;",
+              "descripcion": "Este cielo es para todxs: todas las identidades, todas las formas de amar.&nbsp;"
+            }
+          },
+          "pillar_LjR8td": {
+            "type": "pillar",
+            "name": "Estetica y excelencia",
+            "settings": {
+              "titulo": "🎨&nbsp;Estética y excelencia",
+              "descripcion": "Productos bellos, funcionales y cuidadosamente elegidos.&nbsp;"
+            }
+          },
+          "pillar_qkfAtr": {
+            "type": "pillar",
+            "name": "Espiritualidad erotica",
+            "settings": {
+              "titulo": "🌙&nbsp;Espiritualidad erótica",
+              "descripcion": "Reconocemos el deseo como una fuerza sagrada y creadora.&nbsp;"
+            }
+          },
+          "pillar_npyePf": {
+            "type": "pillar",
+            "name": "Coherencia y cuidado",
+            "settings": {
+              "titulo": "🧿&nbsp;Coherencia y cuidado",
+              "descripcion": "Nos guiamos con verdad, respeto y responsabilidad en cada acción.&nbsp;"
+            }
+          }
+        },
+        "block_order": [
+          "pillar_H67Dmz",
+          "pillar_FCbK8k",
+          "pillar_3UU7WU",
+          "pillar_LjR8td",
+          "pillar_qkfAtr",
+          "pillar_npyePf"
+        ],
         "settings": {
           "about": "Acerca de Ojos de Ángel",
           "title": "Un espacio donde el placer tiene alma",
@@ -165,10 +223,9 @@
           "mision_description": "<p>Acompañarte en tu camino hacia un bienestar íntimo y emocional, a través de productos eróticos cuidadosamente seleccionados, que integran sensualidad, conciencia y espiritualidad. </p><p>En Ojos de Ángel, promovemos una sexualidad libre, respetuosa y empoderadora, en armonía con el amor propio y la conexión auténtica. </p>",
           "vision_title": "🚀 Nuestra visión",
           "vision_description": "<p> Soñamos con un mundo donde la sexualidad se viva como lo que realmente es:<br/>una energía poderosa, inclusiva y transformadora.</p><p>Queremos ser la marca hispana referente en placer consciente,<br/>donde cada persona, sin importar cómo ame o se identifique, encuentre un espacio seguro para sentir, explorar y expandirse.</p>",
-          "pilares_title": "Nuestros pilares",
-          "pilares_description": "<p> </p>",
-          "end_title": "Bienvenida a Ojos de Ángel",
-          "end_description": "<p> </p>"
+          "pilares_title": "💗 Nuestros pilares",
+          "end_title": "🕊️ Bienvenid@ a Ojos de Ángel",
+          "end_description": "<p> No importa si estás empezando a explorar o si ya vuelas alto en tu camino erótico.<br/>Aquí te esperamos con las alas abiertas, el corazón encendido y la certeza de que el placer puede ser sagrado.</p>"
         }
       }
     },
