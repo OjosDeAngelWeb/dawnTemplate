@@ -176,7 +176,7 @@
 .banner__media {
   position: absolute;
   top: 0;
-  inset: 0 50px;
+  inset: 0px 20px;
 }
 
 .banner__media-half {
