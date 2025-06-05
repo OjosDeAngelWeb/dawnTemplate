@@ -39,11 +39,7 @@
             <aside class="right-column">
               {% assign frase_tag = '' %}
               {% assign collection_products = collections.frontpage.products %}
-              {% for tag in article.tags %}
-                {% if tag contains 'frase:' %}
-                  {% assign frase_tag = tag | remove: 'frase:' | strip %}
-                {% endif %}
-              {% endfor %}
+              {% assign frase_tag = article.metafields.custom.phrase %}
               {% if frase_tag != '' %}
                 {% assign frase = frase_tag | remove: 'frase:' %}
                 <div class="sidebar-quote">
