@@ -147,6 +147,9 @@
         "logo_width": {
           "label": "Width"
         },
+        "logo_mobile_width": {
+          "label": "Width"
+        },
         "favicon": {
           "label": "Favicon",
           "info": "Displayed at 32 x 32px"
