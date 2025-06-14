@@ -30,6 +30,37 @@
                 loading="lazy"
               >
             {% endif %}
+            <div class="lower-center-container">
+              <div class="comentarios-left">
+                <p class="testimonial">
+                  ✨ “Una experiencia mágica desde el empaque.”<br>
+                  <span class="autor">— Laura, Medellín</span>
+                </p>
+                <p class="testimonial">
+                  ✨ “Lo compré como regalo, pero terminé usándolo yo. ¡Mágico de verdad!”<br>
+                  <span class="autor">— Camila, Cali</span>
+                </p>
+              </div>
+
+              <div class="iconos-footer">
+                <div class="icono-item">
+                  <span class="svg-wrapper">{{- 'icon-shipment.svg' | inline_asset_content -}}</span>
+                  <p class="icono-item-text">{{ section.settings.icon_1_text }}</p>
+                </div>
+                <div class="icono-item">
+                  <span class="svg-wrapper">{{- 'icon-gift.svg' | inline_asset_content -}}</span>
+                  <p class="icono-item-text">{{ section.settings.icon_2_text }}</p>
+                </div>
+                <div class="icono-item">
+                  <span class="svg-wrapper">{{- 'icon-mysthic.svg' | inline_asset_content -}}</span>
+                  <p class="icono-item-text">{{ section.settings.icon_3_text }}</p>
+                </div>
+                <div class="icono-item">
+                  <span class="svg-wrapper">{{- 'icon-secure-card.svg' | inline_asset_content -}}</span>
+                  <p class="icono-item-text">{{ section.settings.icon_4_text }}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="ads-hero__section z-index-1">
@@ -208,11 +239,6 @@
     margin-bottom: 0.5rem;
   }
 
-  .icono-item p {
-    font-size: 0.9rem;
-    color: #333;
-  }
-
   .ads-hero__button {
     display: inline-block;
     margin-top: 2rem;
@@ -260,6 +286,7 @@
 
   .icono-item p {
     font-size: 1rem;
+    color: #333;
   }
 
   .comentarios-left {
@@ -284,10 +311,6 @@
   .icono-item .svg-wrapper {
     width: 60px !important;
     height: 60px !important;
-  }
-
-  .icono-item p {
-    font-size: 1.1rem;
   }
 
   .rows-container {
@@ -337,6 +360,10 @@
     padding: 5rem 1rem;
   }
 
+  .lower-center-container {
+    display: none;
+  }
+
   /* 🌐 Estilo mobile tipo app */
   @media screen and (max-width: 990px) {
     header,
@@ -359,6 +386,14 @@
       flex: none;
       width: 100%;
       height: 100vh; /* Cada sección ocupa la pantalla completa */
+    }
+
+    .lower-container {
+      display: none;
+    }
+
+    .lower-center-container {
+      display: block;
     }
 
     .iconos-footer {
@@ -385,6 +420,32 @@
       object-fit: contain;
       margin-bottom: 0.5rem;
     }
+
+    .ads-hero__button {
+      font-size: 3rem;
+      padding: 1rem 2.5rem;
+      border-radius: 9999px;
+    }
+
+    .ads-hero__subtitle {
+      font-size: 3rem;
+    }
+
+    .testimonial {
+      font-size: 2rem;
+    }
+
+    .autor {
+      font-size: 2rem;
+    }
+
+    .icono-item p {
+      font-size: 2rem;
+  }
+
+  .comentarios-left {
+    text-align: center;
+    max-width: 100%;
   }
 </style>
 
