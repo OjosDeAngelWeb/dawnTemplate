@@ -1,88 +1,86 @@
-<section class="ads-hero ">
+<section class="ads-hero">
   <header class="ads-hero__header">
-    <div class="logo"></div>
-    <div class="menu_links">
-      {% assign collection = section.settings.menu.links %}
-      {% for subcollection in collection %}
-        <a href="{{ subcollection.url }}">
-          <h3 class="collection_link">{{ subcollection.title }}</h3>
-        </a>
-      {% endfor %}
-    </div>
+    <p class="ads-hero__title">Explora tu placer con elegancia, magia y total discreción.</p>
   </header>
   <main>
-    <div class="ads-hero__section z-index-1">
-      <div class="contenido">
-        <h1 class="ads-hero__title">
-          {{ section.settings.title }}
-        </h1>
-
-        <p class="ads-hero__subtitle">
-          {{ section.settings.subtitle }}
-        </p>
-        <a
-          href="{{ section.settings.button_link }}"
-          class="ads-hero__button"
-        >
-          {{ section.settings.button_label }}
-        </a>
-      </div>
-    </div>
-    <div class="ads-hero__section__center">
-      <div class="center-container">
-        {%- if section.settings.box_image != blank -%}
-          <img
-            src="{{ section.settings.box_image | image_url }}"
-            width="170%"
-            height="auto"
-            alt="Caja celestial Ojos de Ángel"
-            class="ads-hero__box-bg"
-            loading="lazy"
-          >
-        {%- endif -%}
-        <div class="iconos-footer">
-          <div class="icono-item">
-            <span class="svg-wrapper">
-              {{- 'icon-shipment.svg' | inline_asset_content -}}
-            </span>
-            <p>{{ section.settings.icon_1_text }}</p>
+    <div class="rows-container">
+      <div class="upper-container">
+        <div class="ads-hero__section z-index-1">
+          <div class="contenido">
+            <p class="ads-hero__subtitle">
+              {{ section.settings.title }}
+            </p>
+            <a
+              href="{{ section.settings.button_link }}"
+              class="ads-hero__button"
+            >
+              {{ section.settings.button_label }}
+            </a>
           </div>
-          <div class="icono-item">
-            <span class="svg-wrapper">
-              {{- 'icon-gift.svg' | inline_asset_content -}}
-            </span>
-            <p>{{ section.settings.icon_2_text }}</p>
+        </div>
+        <div class="ads-hero__section__center">
+          <div class="center-container">
+            {% if section.settings.box_image != blank %}
+              <img
+                src="{{ section.settings.box_image | image_url }}"
+                width="170%"
+                height="auto"
+                alt="Caja celestial Ojos de Ángel"
+                class="ads-hero__box-bg"
+                loading="lazy"
+              >
+            {% endif %}
           </div>
-          <div class="icono-item">
-            <span class="svg-wrapper">
-              {{- 'icon-mysthic.svg' | inline_asset_content -}}
-            </span>
-            <p>{{ section.settings.icon_3_text }}</p>
-          </div>
-          <div class="icono-item">
-            <span class="svg-wrapper">
-              {{- 'icon-secure-card.svg' | inline_asset_content -}}
-            </span>
-            <p>{{ section.settings.icon_4_text }}</p>
+        </div>
+        <div class="ads-hero__section z-index-1">
+          <div class="contenido">
+            <p class="ads-hero__subtitle">
+              {{ section.settings.right_title }}
+            </p>
+            <p class="ads-hero__subtitle">
+              {{ section.settings.right_subtitle }}
+            </p>
+            <a
+              href="{{ section.settings.right_button_link }}"
+              class="ads-hero__button"
+            >
+              {{ section.settings.righ_button_label }}
+            </a>
           </div>
         </div>
       </div>
-    </div>
-    <div class="ads-hero__section z-index-1">
-      <div class="contenido">
-        <p class="ads-hero__subtitle">
-          {{ section.settings.right_title }}
-        </p>
+      <div class="lower-container">
+        <div class="center-flex">
+          <div class="comentarios-left">
+            <p class="testimonial">
+              ✨ “Una experiencia mágica desde el empaque.”<br>
+              <span class="autor">— Laura, Medellín</span>
+            </p>
+            <p class="testimonial">
+              ✨ “Lo compré como regalo, pero terminé usándolo yo. ¡Mágico de verdad!”<br>
+              <span class="autor">— Camila, Cali</span>
+            </p>
+          </div>
 
-        <p class="ads-hero__subtitle">
-          {{ section.settings.right_subtitle }}
-        </p>
-        <a
-          href="{{ section.settings.right_button_link }}"
-          class="ads-hero__button"
-        >
-          {{ section.settings.righ_button_label }}
-        </a>
+          <div class="iconos-footer">
+            <div class="icono-item">
+              <span class="svg-wrapper">{{- 'icon-shipment.svg' | inline_asset_content -}}</span>
+              <p>{{ section.settings.icon_1_text }}</p>
+            </div>
+            <div class="icono-item">
+              <span class="svg-wrapper">{{- 'icon-gift.svg' | inline_asset_content -}}</span>
+              <p>{{ section.settings.icon_2_text }}</p>
+            </div>
+            <div class="icono-item">
+              <span class="svg-wrapper">{{- 'icon-mysthic.svg' | inline_asset_content -}}</span>
+              <p>{{ section.settings.icon_3_text }}</p>
+            </div>
+            <div class="icono-item">
+              <span class="svg-wrapper">{{- 'icon-secure-card.svg' | inline_asset_content -}}</span>
+              <p>{{ section.settings.icon_4_text }}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -173,8 +171,8 @@
 
   .center-container {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -240,6 +238,18 @@
     margin-bottom: 1rem;
   }
 
+  .ads-hero__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem); /* Escala entre 40px y 56px */
+    font-weight: 800;
+    color: #5a3242; /* Vino profundo elegante */
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(232, 216, 236, 0.4); /* Glow lavanda suave */
+    margin-bottom: 1.5rem;
+  }
+
   .ads-hero__subtitle {
     font-size: 2rem;
     line-height: 1.1;
@@ -250,6 +260,77 @@
 
   .icono-item p {
     font-size: 1rem;
+  }
+
+  .comentarios-left {
+    text-align: left;
+    max-width: 500px;
+  }
+
+  .testimonial {
+    font-size: 1rem;
+    color: #1a0e13;
+    margin-bottom: 1rem;
+  }
+
+  .autor {
+    font-style: italic;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 0.25rem;
+    color: #555;
+  }
+
+  .icono-item .svg-wrapper {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .icono-item p {
+    font-size: 1.1rem;
+  }
+
+  .rows-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  .upper-container {
+    flex: 1.6; /* 60% aprox del alto disponible */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .lower-container {
+    flex: 1; /* 40% aprox */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.5rem 2rem;
+    gap: 1.5rem;
+  }
+
+  .center-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 1rem 4rem;
+  }
+
+  .comentarios-left,
+  .iconos-footer {
+    flex: 1 1 45%;
+    min-width: 300px;
   }
 
   /* 🌐 Estilo mobile tipo app */
@@ -334,7 +415,7 @@
       "type": "text",
       "id": "title",
       "label": "Título",
-      "default": "Tu deseo también es luz"
+      "default": "Juguetes íntimos, lencería celestial y rituales sensuales que encienden tu energía interior."
     },
     {
       "type": "text",
