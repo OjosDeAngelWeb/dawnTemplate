@@ -337,6 +337,11 @@
       {% endif %}
     {% endfor %}
   </div>
+  <div class="envio-gratis-marquesina">
+    <div class="marquee-wrapper">
+      <p class="texto-marquesina">✨ ¡Envíos gratis en compras superiores a $120.000!</p>
+    </div>
+  </div>
 </header>
 
 <style>
@@ -513,6 +518,49 @@
     font-size: 1rem;
     font-weight: 400;
     line-height: normal;
+  }
+  .envio-gratis-marquesina {
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(to right, #f8f1f6, #f1e5f5);
+    padding: 8px 0;
+    border-top: 1px solid #e8dce6;
+    border-bottom: 1px solid #e8dce6;
+  }
+
+  .marquee-wrapper {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .texto-marquesina {
+    display: inline-block;
+    min-width: 100%;
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+    color: #6c103b;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .texto-marquesina {
+      font-size: 13px;
+      animation-duration: 10s;
+    }
   }
 
   /* Responsive */
