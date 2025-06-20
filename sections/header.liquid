@@ -545,6 +545,7 @@
     font-weight: 600;
     letter-spacing: 0.03em;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+    animation-duration: 40s;
   }
 
   @keyframes marquee {
@@ -552,19 +553,16 @@
       transform: translateX(100%);
     }
     100% {
-      transform: translateX(-100%);
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    .texto-marquesina {
-      font-size: 13px;
-      animation-duration: 10s;
+      transform: translateX(-25%);
     }
   }
 
   /* Responsive */
   @media (max-width: 768px) {
+    .texto-marquesina {
+      font-size: 13px;
+      animation-duration: 10s;
+    }
     .header-desktop {
       display: none;
     }

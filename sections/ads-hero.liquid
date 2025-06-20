@@ -165,9 +165,7 @@
   }
 
   main {
-    height: 80vh;
     display: flex;
-    overflow: hidden;
   }
 
   .ads-hero__section {
@@ -371,21 +369,20 @@
       display: none; /* Ocultar header y footer en mobile */
     }
 
-    body {
-      height: 100vh;
-    }
 
     main {
       flex: 1;
-      height: 100vh;
       flex-direction: column;
-      overflow-y: auto; /* Scroll vertical */
     }
 
     .ads-hero__section {
       flex: none;
       width: 100%;
-      height: 100vh; /* Cada sección ocupa la pantalla completa */
+      height: 20vh;
+    }
+
+    .ads-hero__section__center {
+      height: 70vh;
     }
 
     .lower-container {

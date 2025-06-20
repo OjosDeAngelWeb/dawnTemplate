@@ -9,50 +9,48 @@
   </head>
   <body class="landing">
     {{ content_for_layout }}
-    {% if request.path contains 'ads_landing' %}
-      <!-- Meta Pixel Base Code -->
-      <script>
-        !(function (f, b, e, v, n, t, s) {
-          if (f.fbq) return;
-          n = f.fbq = function () {
-            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-          };
-          if (!f._fbq) f._fbq = n;
-          n.push = n;
-          n.loaded = !0;
-          n.version = '2.0';
-          n.queue = [];
-          t = b.createElement(e);
-          t.async = !0;
-          t.src = v;
-          s = b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t, s);
-        })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    <!-- Meta Pixel Base Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
 
-        fbq('init', '715756690978568'); // Reemplazar con tu ID si cambia
-        fbq('track', 'PageView');
-      </script>
-      <noscript>
-        <img
-          height="1"
-          width="1"
-          style="display:none"
-          src="https://www.facebook.com/tr?id=715756690978568&ev=PageView&noscript=1"
-        >
-      </noscript>
-      <!-- End Meta Pixel Base Code -->
-      <!-- Evento personalizado al hacer clic en botones -->
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const botones = document.querySelectorAll('a[href="products"], a[href="collections"]');
+      fbq('init', '715756690978568'); // Reemplazar con tu ID si cambia
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=715756690978568&ev=PageView&noscript=1"
+      >
+    </noscript>
+    <!-- End Meta Pixel Base Code -->
+    <!-- Evento personalizado al hacer clic en botones -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const botones = document.querySelectorAll('a[href="products"], a[href="collections"]');
 
-          botones.forEach((boton) => {
-            boton.addEventListener('click', function () {
-              fbq('trackCustom', 'EntrarAlRitual');
-            });
+        botones.forEach((boton) => {
+          boton.addEventListener('click', function () {
+            fbq('trackCustom', 'EntrarAlRitual');
           });
         });
-      </script>
-    {% endif %}
+      });
+    </script>
   </body>
 </html>

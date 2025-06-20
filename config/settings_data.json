@@ -12,6 +12,7 @@
     "logo": "shopify://shop_images/LastLogo.webp",
     "logo_width": 90,
     "logo_mobile_width": 40,
+    "favicon": "shopify://shop_images/favicon-32x32_97a2bae7-9736-408c-a1d5-36dd0de67e97.png",
     "type_header_font": "montserrat_n4",
     "heading_scale": 110,
     "type_body_font": "assistant_n4",
