@@ -55,6 +55,7 @@
         </ul>
       </div>
     {% endif %}
+    <button class="categories-toggle categories-btn" onclick="window.location='/pages/contacto';">Contacto</button>
 
     <div class="acciones">
       <div
@@ -319,6 +320,21 @@
     </details>
     {% for block in section.blocks %}
       {% if block.type == 'blog_menu' and linklists[block.settings.menu_blog] %}
+        <details>
+          <summary style="cursor: pointer; font-size: 18px; color: #6c103b; font-weight: 600;">
+            Blog Rituales y consejos
+            <svg class="chevron-icon" viewBox="0 0 24 24" width="20" height="20">
+              <path d="M8 10l4 4 4-4" fill="none" stroke="#6c103b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <ul class="submenu-mobile">
+            {% for link in linklists[block.settings.menu_blog].links %}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </details>
         <details>
           <summary style="cursor: pointer; font-size: 18px; color: #6c103b; font-weight: 600;">
             Blog Rituales y consejos
