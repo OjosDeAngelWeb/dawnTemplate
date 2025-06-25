@@ -229,6 +229,25 @@
           "end_title": "🕊️ Bienvenid@ a Ojos de Ángel",
           "end_description": "<p> No importa si estás empezando a explorar o si ya vuelas alto en tu camino erótico.<br/>Aquí te esperamos con las alas abiertas, el corazón encendido y la certeza de que el placer puede ser sagrado.</p>"
         }
+      },
+      "ads-hero-mobile": {
+        "type": "ads-hero-mobile",
+        "settings": {
+          "menu": "main-menu",
+          "box_image": "shopify://shop_images/Diseno_sin_titulo_1.webp",
+          "title": "Juguetes íntimos, lencería celestial y rituales sensuales que encienden tu energía interior.",
+          "subtitle": "Explora tu sensualidad con elegancia y magia",
+          "button_label": "Descubre tu colección celestial",
+          "button_link": "shopify://collections/all",
+          "right_title": "✨ \"Una experiencia mágica desde el empaque.\"",
+          "right_subtitle": "✨ \"Calidad, respeto y sensualidad.\"",
+          "righ_button_label": "Explora ahora",
+          "right_button_link": "shopify://collections/all",
+          "icon_1_text": "Envio discreto",
+          "icon_2_text": "Empaque elegante",
+          "icon_3_text": "Energia mistica",
+          "icon_4_text": "Pago seguro"
+        }
       }
     },
     "content_for_index": [],

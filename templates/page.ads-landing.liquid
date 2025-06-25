@@ -1,2 +1,26 @@
 {% layout 'landing' %}
-{% section 'ads-hero' %}
+<div class="only-desktop">
+  {% section 'ads-hero' %}
+</div>
+
+<div class="only-mobile">
+  {% section 'ads-hero-mobile' %}
+</div>
+
+<style>
+  .only-desktop {
+    display: block;
+  }
+
+  .only-mobile {
+    display: none;
+  }
+  @media screen and (max-width: 990px) {
+    .only-desktop {
+      display: none !important;
+    }
+    .only-mobile {
+      display: block !important;
+    }
+  }
+</style>
