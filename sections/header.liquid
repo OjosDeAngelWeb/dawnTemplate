@@ -335,27 +335,17 @@
             {% endfor %}
           </ul>
         </details>
-        <details>
-          <summary style="cursor: pointer; font-size: 18px; color: #6c103b; font-weight: 600;">
-            Blog Rituales y consejos
-            <svg class="chevron-icon" viewBox="0 0 24 24" width="20" height="20">
-              <path d="M8 10l4 4 4-4" fill="none" stroke="#6c103b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <ul class="submenu-mobile">
-            {% for link in linklists[block.settings.menu_blog].links %}
-              <li>
-                <a href="{{ link.url }}">{{ link.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </details>
       {% endif %}
     {% endfor %}
   </div>
-  <div class="envio-gratis-marquesina">
+  <div class="envio-gratis-marquesina primera">
     <div class="marquee-wrapper">
       <p class="texto-marquesina">✨ ¡Envíos gratis en compras superiores a $120.000!</p>
+    </div>
+  </div>
+  <div class="envio-gratis-marquesina segunda">
+    <div class="marquee-wrapper">
+      <p class="texto-marquesina">✨ Pago contra entrega en Medellín y el Área Metropolitana!</p>
     </div>
   </div>
 </header>
@@ -544,6 +534,21 @@
     border-bottom: 1px solid #e8dce6;
   }
 
+  .envio-gratis-marquesina.primera {
+    background: linear-gradient(to right, #f8f1f6, #f1e5f5);
+  }
+
+  .envio-gratis-marquesina.segunda {
+    background: linear-gradient(to right, #f5eaf5, #f9f3ea);
+    border-top: 1px solid #e3d1e8;
+    border-bottom: 1px solid #e3d1e8;
+  }
+
+  .envio-gratis-marquesina .texto-marquesina {
+    color: #6c103b;
+    font-weight: 500;
+  }
+
   .marquee-wrapper {
     display: flex;
     width: 100%;
@@ -561,7 +566,7 @@
     font-weight: 600;
     letter-spacing: 0.03em;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
-    animation-duration: 40s;
+    animation-duration: 25s;
   }
 
   @keyframes marquee {
@@ -660,6 +665,14 @@
     .menu-toggle:hover .icono-hamburguesa {
       transform: scale(1.05);
       transition: transform 0.2s ease;
+    }
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
     }
   }
 
