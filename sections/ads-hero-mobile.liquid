@@ -1,101 +1,45 @@
 <section class="ads-hero">
-  <header class="ads-hero__header">
-    <p class="ads-hero__title">Explora tu placer con elegancia, magia y total discreción.</p>
-  </header>
-  <div class="rows-container">
-    <div class="contenido">
-      <p class="ads-hero__subtitle">
-        {{ section.settings.title }}
-      </p>
-      <a
-        href="{{ section.settings.button_link }}"
-        class="mobile-ads-hero__button"
-      >
-        {{ section.settings.button_label }}
-      </a>
-    </div>
-    <div class="mobile-center-container">
-      {% if section.settings.box_image != blank %}
-        <img
-          src="{{ section.settings.box_image | image_url }}"
-          width="170%"
-          height="auto"
-          alt="Caja celestial Ojos de Ángel"
-          class="ads-hero__box-bg"
-          loading="lazy"
-        >
+  <main>
+    <div class="ads-hero-mobile">
+      {% if section.settings.collection %}
+        <div class="product-cards-wrapper">
+          {% for product in section.settings.collection.products limit: 3 %}
+            <div class="product-card">
+              <div class="product-info">
+                <h2 class="product-title">{{ product.title }}</h2>
+                <p class="product-price">
+                  <span class="current-price">{{ product.price | money_without_trailing_zeros }}</span>
+                  {% if product.compare_at_price > product.price %}
+                    <span class="old-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                  {% endif %}
+                </p>
+                <ul class="product-benefits">
+                  <li>• Vibraciones intensas y silenciosas</li>
+                  <li>• Tamaño discreto, efecto adictivo</li>
+                  <li>• Ideal para rituales en solitario o pareja</li>
+                </ul>
+                <a href="{{ product.url }}" class="product-button">Lo quiero ya 🔥</a>
+              </div>
+
+              {% if product.featured_image %}
+                <div class="product-image-wrapper">
+                  <img
+                    src="{{ product.featured_image | image_url: width: 500 }}"
+                    alt="{{ product.title }} - juguete íntimo discreto"
+                    class="product-image"
+                    loading="lazy"
+                    width="100%"
+                    height="auto"
+                  >
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
       {% endif %}
-      <div class="mobile-lower-center-container">
-        <div class="mobile-comentarios-left">
-          <p class="mobile-testimonial">
-            ✨ “Una experiencia mágica desde el empaque.”<br>
-            <span class="autor">— Laura, Medellín</span>
-          </p>
-          <p class="mobile-testimonial">
-            ✨ “Lo compré como regalo, pero terminé usándolo yo. ¡Mágico de verdad!”<br>
-            <span class="autor">— Camila, Cali</span>
-          </p>
-        </div>
-
-        <div class="mobile-iconos-footer">
-          <div class="mobile-icono-item">
-            <span class="svg-wrapper">{{- 'icon-shipment.svg' | inline_asset_content -}}</span>
-            <p class="mobile-icono-item-text">{{ section.settings.icon_1_text }}</p>
-          </div>
-          <div class="mobile-icono-item">
-            <span class="svg-wrapper">{{- 'icon-gift.svg' | inline_asset_content -}}</span>
-            <p class="mobile-icono-item-text">{{ section.settings.icon_2_text }}</p>
-          </div>
-          <div class="mobile-icono-item">
-            <span class="svg-wrapper">{{- 'icon-mysthic.svg' | inline_asset_content -}}</span>
-            <p class="mobile-icono-item-text">{{ section.settings.icon_3_text }}</p>
-          </div>
-          <div class="mobile-icono-item">
-            <span class="svg-wrapper">{{- 'icon-secure-card.svg' | inline_asset_content -}}</span>
-            <p class="mobile-icono-item-text">{{ section.settings.icon_4_text }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="mobile-contenido">
-        <p class="mobile-ads-hero__subtitle">
-          {{ section.settings.right_title }}
-        </p>
-        <p class="mobile-ads-hero__subtitle">
-          {{ section.settings.right_subtitle }}
-        </p>
-        <a
-          href="{{ section.settings.right_button_link }}"
-          class="mobile-ads-hero__button"
-        >
-          {{ section.settings.righ_button_label }}
-        </a>
-      </div>
     </div>
-  </div>
+  </main>
 </section>
-<style>
-  html,
-  body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden; /* evita scroll horizontal por desbordes */
-    margin: 0;
-    padding: 0;
-  }
-
-  .mobile-ads-hero {
-    width: 100vw;
-    max-width: 100vw;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  .page-width {
-    max-width: none !important;
-    width: 100% !important;
-  }
-</style>
 
 {% schema %}
 {
@@ -103,6 +47,11 @@
   "tag": "section",
   "class": "section section-hero",
   "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Products"
+    },
     {
       "type": "link_list",
       "id": "menu",

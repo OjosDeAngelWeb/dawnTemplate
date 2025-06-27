@@ -233,6 +233,7 @@
       "ads-hero-mobile": {
         "type": "ads-hero-mobile",
         "settings": {
+          "collection": "dildos",
           "menu": "main-menu",
           "box_image": "shopify://shop_images/Diseno_sin_titulo_1.webp",
           "title": "Juguetes íntimos, lencería celestial y rituales sensuales que encienden tu energía interior.",
