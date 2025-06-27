@@ -140,7 +140,6 @@
         "type": "ads-hero",
         "settings": {
           "menu": "menu-categorias",
-          "logo_image": "shopify://shop_images/backgorund.png",
           "background": "shopify://shop_images/backgorund.png",
           "background_mobile": "shopify://shop_images/backgroundMobile.png",
           "box_image": "shopify://shop_images/Diseno_sin_titulo_1.webp",
@@ -234,21 +233,16 @@
       "ads-hero-mobile": {
         "type": "ads-hero-mobile",
         "settings": {
-          "collection": "dildos",
-          "menu": "main-menu",
-          "box_image": "shopify://shop_images/Diseno_sin_titulo_1.webp",
+          "collection": "featured-landing",
+          "logo_image": "shopify://shop_images/Logo.webp",
+          "store_name": "Ojos de Ángel",
           "title": "Placer celestial directo a tu puerta",
           "subtitle": "Juguetes y lencería con envío discreto",
-          "button_label": "🔥 Ver productos",
+          "description": "Productos íntimos irresistibles para regalar(te) placer, misterio y conexión. Compra hoy y recibe sorpresa especial ✨",
+          "button_label": "🔥 Ver todos los productos",
           "button_link": "shopify://collections/all",
-          "right_title": "✨ \"Una experiencia mágica desde el empaque.\"",
-          "right_subtitle": "✨ \"Calidad, respeto y sensualidad.\"",
-          "righ_button_label": "Explora ahora",
-          "right_button_link": "/",
-          "icon_1_text": "Envio discreto",
-          "icon_2_text": "Empaque elegante",
-          "icon_3_text": "Energia mistica",
-          "icon_4_text": "Pago seguro"
+          "button_label_shopping": "✨ Comprar con envío gratis desde $120.000",
+          "button_link_shopping": "/"
         }
       }
     },
