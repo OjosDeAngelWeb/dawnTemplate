@@ -1,6 +1,31 @@
 <section class="ads-hero">
   <main>
     <div class="ads-hero-mobile">
+      <div class="logo-title-wrapper">
+        <div class="logo-header">
+          <img
+            src="{{ settings.logo | image_url: width: 500 }}"
+            alt="logo"
+            class="logo-image"
+            loading="lazy"
+            width="100%"
+            height="auto"
+          >
+        </div>
+        <h1 class="golden-title">{{ section.settings.store_name }}</h1>
+      </div>
+      <div class="free-shipping-banner animated-shine">
+        ✨ Envío GRATIS por compras desde <strong>$120.000</strong> ✨
+      </div>
+      <div class="hero-text">
+        <h1 class="hero-title">{{ section.settings.title }}</h1>
+        <h2 class="hero-subtitle">{{ section.settings.subtitle }}</h2>
+        <p class="hero-description">{{ section.settings.description }}</p>
+      </div>
+      <div class="magic-buttons">
+        <a href="{{ routes.all_products_collection_url }}" class="button-orange">{{ section.settings.button_label }}</a>
+        <a href="{{ routes.root_url }}" class="button-lavender">{{ section.settings.button_label_shopping }}</a>
+      </div>
       {% if section.settings.collection %}
         <div class="product-cards-wrapper">
           {% for product in section.settings.collection.products limit: 3 %}
@@ -37,6 +62,96 @@
           {% endfor %}
         </div>
       {% endif %}
+      <div class="benefits-block">
+        <div class="benefit">
+          <div class="icon-circle lavender">
+            <img
+              src="{{ 'freeShip.svg' | asset_url }}"
+              alt="Ícono envío discreto"
+              class="benefit-icon"
+              width="40"
+              height="40"
+            >
+          </div>
+          <div class="benefit-text">
+            <h3>Envío discreto</h3>
+            <p>Sin logos. Nadie sabrá lo que llega… salvo tú.</p>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="icon-circle peach">
+            <img
+              src="{{ 'package.svg' | asset_url }}"
+              alt="Ícono empaque elegante"
+              class="benefit-icon"
+              width="40"
+              height="40"
+            >
+          </div>
+          <div class="benefit-text">
+            <h3>Empaque elegante</h3>
+            <p>Empaque mágico que eleva el placer desde el primer vistazo.</p>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="icon-circle blue">
+            <img
+              src="{{ 'pago.svg' | asset_url }}"
+              alt="Ícono pago seguro"
+              class="benefit-icon"
+              width="40"
+              height="40"
+            >
+          </div>
+          <div class="benefit-text">
+            <h3>Paga seguro</h3>
+            <p>Pagos cifrados y confiables.</p>
+          </div>
+        </div>
+
+        <div class="benefit">
+          <div class="icon-circle purple">
+            <img
+              src="{{ 'energia.svg' | asset_url }}"
+              alt="Ícono energia mistica"
+              class="benefit-icon"
+              width="40"
+              height="40"
+            >
+          </div>
+          <div class="benefit-text">
+            <h3>Energía mística</h3>
+            <p>Cada producto elegido con intención: placer, conexión y expansión.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-section">
+        <h2 class="testimonial-heading">✨ Lo que dicen nuestras almas celestiales</h2>
+
+        <div class="testimonial-cards">
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              “Me llegó rapidísimo, en una cajita preciosa. Nadie sospechó nada. ¡Ya quiero pedir más!”
+            </p>
+            <p class="testimonial-author">— Valentina R.</p>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">✨ “Pensé que era un regalo para ella… y terminamos usándolo juntos.”</p>
+            <p class="testimonial-author">— Andrés & Lina, Medellín.</p>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              “Me encantó la atención, los detalles y la energía del paquete. Todo se sintió especial.”
+            </p>
+            <p class="testimonial-author">— Camila D.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 </section>
@@ -53,97 +168,57 @@
       "label": "Products"
     },
     {
-      "type": "link_list",
-      "id": "menu",
-      "default": "main-menu",
-      "label": "Menu"
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Imagen Logo"
     },
     {
-      "type": "image_picker",
-      "id": "background",
-      "label": "Imagen de fondo del cielo"
-    },
-    {
-      "type": "image_picker",
-      "id": "background_mobile",
-      "label": "Imagen de fondo para móvil (opcional)"
-    },
-    {
-      "type": "image_picker",
-      "id": "box_image",
-      "label": "Imagen decorativa (caja)"
+      "type": "text",
+      "id": "store_name",
+      "label": "Nombre de la tienda",
+      "default": "Ojos de Ángel"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Título",
-      "default": "Juguetes íntimos, lencería celestial y rituales sensuales que encienden tu energía interior."
+      "default": "Placer celestial directo a tu puerta"
     },
     {
       "type": "text",
       "id": "subtitle",
       "label": "Subtítulo",
-      "default": "Explora tu sensualidad con elegancia y magia"
+      "default": "Juguetes y lencería con envío discreto"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Descripción",
+      "default": "Productos íntimos irresistibles para regalar(te) placer, misterio y conexión. Compra hoy y recibe sorpresa especial ✨"
     },
     {
       "type": "text",
       "id": "button_label",
-      "label": "Texto del botón",
-      "default": "Descubre tu colección celestial"
+      "label": "Texto del botón productos",
+      "default": "🔥 Ver productos"
     },
     {
       "type": "url",
       "id": "button_link",
-      "label": "Enlace del botón",
+      "label": "Enlace del botón productos",
       "default": "/collections/all"
     },
     {
       "type": "text",
-      "id": "right_title",
-      "label": "Título Derecha",
-      "default": "✨ \"Una experiencia mágica desde el empaque.\""
-    },
-    {
-      "type": "text",
-      "id": "right_subtitle",
-      "label": "Subtítulo",
-      "default": "✨ \"Calidad, respeto y sensualidad.\""
-    },
-    {
-      "type": "text",
-      "id": "righ_button_label",
-      "label": "Texto del botón derecho ",
-      "default": "Explora ahora"
+      "id": "button_label_shopping",
+      "label": "Texto del botón compra",
+      "default": "✨ Comprar con envío gratis desde $120.000"
     },
     {
       "type": "url",
-      "id": "right_button_link",
-      "label": "Enlace del botón",
-      "default": "/collections/all"
-    },
-    {
-      "type": "text",
-      "id": "icon_1_text",
-      "label": "Texto Icono1",
-      "default": "Envio discreto"
-    },
-    {
-      "type": "text",
-      "id": "icon_2_text",
-      "label": "Texto Icono2",
-      "default": "Empaque elegante"
-    },
-    {
-      "type": "text",
-      "id": "icon_3_text",
-      "label": "Texto Icono3",
-      "default": "Energia mistica"
-    },
-    {
-      "type": "text",
-      "id": "icon_4_text",
-      "label": "Texto Icono4",
-      "default": "Pago seguro"
+      "id": "button_link_shopping",
+      "label": "Enlace del botón compra",
+      "default": "/"
     }
   ],
   "presets": [
