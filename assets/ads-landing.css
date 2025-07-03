@@ -71,6 +71,31 @@
   pointer-events: none;
 }
 
+.cod-banner {
+  border: 2px dashed #e0b8ff;
+  padding: .8rem;
+  margin: 1rem 1rem;
+  border-radius: 12px;
+  background-color: #f9f5ff;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(173, 133, 255, 0.15);
+}
+
+.cod-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #5e3b4c;
+  margin-bottom: 0.4rem;
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.cod-subtitle {
+  font-size: 1.4rem;
+  color: #4a3b47;
+  font-weight: 500;
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
 @keyframes shine {
   0% {
     left: -75%;
@@ -201,7 +226,7 @@
   display: inline-block;
   padding: 1rem 2rem;
   border-radius: 999px;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   font-family: 'Be Vietnam Pro', sans-serif;
   text-decoration: none;

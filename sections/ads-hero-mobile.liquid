@@ -14,8 +14,10 @@
         </div>
         <h1 class="golden-title">{{ section.settings.store_name }}</h1>
       </div>
-      <div class="free-shipping-banner animated-shine">
-        ✨ Envío GRATIS por compras desde <strong>$120.000</strong> ✨
+      <div class="free-shipping-banner animated-shine">✨ Envío GRATIS por compras desde <strong>$120.000</strong></div>
+      <div class="cod-banner">
+        <p class="cod-title">🚚✨ <strong>¿Estás en Medellín y el area metropolitana?</strong></p>
+        <p class="cod-subtitle">Paga al recibir tu pedido con opción <strong>contra entrega</strong> 🛍️</p>
       </div>
       <div class="hero-text">
         <h1 class="hero-title">{{ section.settings.title }}</h1>
@@ -38,11 +40,14 @@
                     <span class="old-price">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
                   {% endif %}
                 </p>
-                <ul class="product-benefits">
-                  <li>• Vibraciones intensas y silenciosas</li>
-                  <li>• Tamaño discreto, efecto adictivo</li>
-                  <li>• Ideal para rituales en solitario o pareja</li>
-                </ul>
+                {% if product.metafields.custom.featuredtext != blank %}
+                  {% assign featured_items = product.metafields.custom.featuredtext.value | split: ' | ' %}
+                  <ul class="product-benefits">
+                    {% for item in featured_items %}
+                      <li>• {{ item }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
                 <a href="{{ product.url }}" class="product-button">Lo quiero ya 🔥</a>
               </div>
 
