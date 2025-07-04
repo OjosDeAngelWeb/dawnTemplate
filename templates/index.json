@@ -61,7 +61,7 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "collection": "all",
+        "collection": "colleccion-destacados",
         "products_to_show": 3,
         "title": "Destacados",
         "heading_size": "h2",
