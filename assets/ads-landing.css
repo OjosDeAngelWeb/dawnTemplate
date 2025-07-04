@@ -8,6 +8,10 @@
   background-color: #f3f0f9; 
 }
 
+.ads-hero-web {
+  background-color: #f3f0f9; 
+}
+
 .logo-title-wrapper {
   display: flex;
   align-items: center;
@@ -23,14 +27,28 @@
   background-color: #f3f0f9; 
 }
 
+
 .logo-image {
   max-width: 60px;
+  height: auto;
+}
+
+.logo-image-web {
+  max-width: 80px;
   height: auto;
 }
 
 .golden-title {
   font-family: 'Georgia', serif;
   font-size: 2rem;
+  font-weight: 600;
+  color: #d6b160;
+  margin: 0;
+}
+
+.golden-title-web {
+  font-family: 'Georgia', serif;
+  font-size: 4rem;
   font-weight: 600;
   color: #d6b160;
   margin: 0;
@@ -362,4 +380,319 @@
   .testimonial-card {
     width: 30%;
   }
+}
+
+
+.hero-section {
+  background-color: #f3f0f9; 
+  background-size: cover;
+  background-position: center;
+  padding: 5px 20px 40px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #3b003d; /* Morado profundo */
+}
+
+
+.hero-content p {
+  font-size: 2rem;
+  line-height: 1.6;
+  color: #3b003d;
+  margin-bottom: 40px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary {
+  background-color: #fbd3c4;
+  color: #4c1a28;
+}
+
+.btn-primary:hover {
+  background-color: #e7b19d;
+}
+
+.btn-secondary {
+  background-color: #d5c8f0;
+  color: #4c1a28;
+}
+
+.btn-secondary:hover {
+  background-color: #b895e6;
+}
+
+
+.info-banners {
+  background-color: #f3f0f9;
+  background-size: cover;
+  position: relative;
+  padding: 40px 20px 10px;
+  border-radius: 20px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Banner envío gratis */
+.banner-envio-gratis {
+  background-color: #fdf6ff;
+  color: #3b003d;
+  font-weight: 700;
+  padding: 16px 24px;
+  border-radius: 20px;
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Banner contra entrega */
+.banner-contra-entrega {
+  background-color: #ebd9ff;
+  border: 2px dashed #b379f5;
+  padding: 24px;
+  border-radius: 18px;
+  color: #3b003d;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.banner-contra-entrega h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.banner-contra-entrega p {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.product-cards-wrapper-web {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 40px 0;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product-card-web {
+  background-color: #fff7f3;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.product-card-web:hover {
+  transform: translateY(-5px);
+}
+
+.product-info-web {
+  text-align: left;
+}
+
+.product-title-web {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c1c2b;
+  margin-bottom: 6px;
+}
+
+.product-price-web {
+  color: #d39300;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.old-price-web {
+  color: #999;
+  text-decoration: line-through;
+  margin-left: 6px;
+  font-size: 0.9rem;
+}
+
+.product-benefits-web {
+  margin-bottom: 16px;
+  padding-left: 16px;
+  color: #4a3d42;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.product-button-web {
+  background-color: #2e0c48;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: auto;
+  transition: background-color 0.3s ease;
+}
+
+.product-button-web:hover {
+  background-color: #471b6a;
+}
+
+.product-image-wrapper-web {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.product-image-web {
+  max-width: 100%;
+  border-radius: 16px;
+}
+
+
+.benefits-block-web {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px 20px 40px 20px;
+}
+
+.benefit-web {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #fdfafe;
+}
+
+.icon-circle-web {
+  min-width: 60px;
+  min-height: 60px;
+  max-width: 60px;
+  max-height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefit-icon-web {
+  width: 28px;
+  height: 28px;
+}
+
+/* Textos */
+.benefit-text-web h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #301833;
+  margin: 0;
+}
+
+.benefit-text-web p {
+  font-size: 1.4rem;
+  color: #4d3a50;
+  margin-top: 4px;
+}
+
+/* Colores de fondo */
+.lavender {
+  background-color: #e9d7f9;
+}
+
+.peach {
+  background-color: #ffe0cf;
+}
+
+.blue {
+  background-color: #d8e9f6;
+}
+
+.purple {
+  background-color: #f2dcf9;
+}
+
+.testimonial-section-web {
+  background-color: #f9f5fe;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.testimonial-heading-web {
+  font-size: 2.2rem;
+  color: #5a2b63;
+  font-weight: 700;
+  margin-bottom: 40px;
+  font-family: 'Georgia', serif;
+  line-height: 1.4;
+}
+
+.testimonial-cards-web {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.testimonial-card-web {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(130, 85, 160, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card-web:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(130, 85, 160, 0.15);
+}
+
+.testimonial-text-web {
+  font-size: 1.6rem;
+  color: #3f2a3a;
+  font-style: italic;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.testimonial-author-web {
+  font-size: 1.2rem;
+  color: #6a5179;
+  font-style: italic;
 }

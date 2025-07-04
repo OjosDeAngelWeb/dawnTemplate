@@ -139,6 +139,8 @@
       "ads-hero": {
         "type": "ads-hero",
         "settings": {
+          "collection": "featured-landing",
+          "store_name": "Ojos de Ángel",
           "menu": "menu-categorias",
           "background": "shopify://shop_images/backgorund.png",
           "background_mobile": "shopify://shop_images/backgroundMobile.png",

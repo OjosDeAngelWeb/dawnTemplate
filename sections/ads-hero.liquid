@@ -1,121 +1,169 @@
 <section class="ads-hero">
-  <header class="ads-hero__header">
-    <p class="ads-hero__title">Explora tu placer con elegancia, magia y total discreción.</p>
-  </header>
   <main>
-    <div class="rows-container">
-      <div class="upper-container">
-        <div class="ads-hero__section z-index-1">
-          <div class="contenido">
-            <p class="ads-hero__subtitle">
-              {{ section.settings.title }}
-            </p>
-            <a
-              href="{{ section.settings.button_link }}"
-              class="ads-hero__button"
-            >
-              {{ section.settings.button_label }}
-            </a>
+    <div class="ads-hero-web">
+      <div class="logo-title-wrapper">
+        <div class="logo-header">
+          <img
+            src="{{ settings.logo | image_url: width: 700 }}"
+            alt="logo"
+            class="logo-image-web"
+            loading="lazy"
+            width="100%"
+            height="auto"
+          >
+        </div>
+        <h1 class="golden-title-web">{{ section.settings.store_name }}</h1>
+      </div>
+      <section class="info-banners">
+        <div class="banner-envio-gratis">
+          ✨ <strong>Envío GRATIS</strong> por compras desde <strong>$120.000</strong>
+        </div>
+
+        <div class="banner-contra-entrega">
+          <h3>🚚✨ ¿Estás en Medellín y el área metropolitana?</h3>
+          <p>Paga al recibir tu pedido con opción <strong>contra entrega</strong> 🎁</p>
+        </div>
+      </section>
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1>Placer Celestial Directo a tu Puerta</h1>
+          <p>Juguetes íntimos y lencería con envío discreto. Experimenta placer, misterio y conexión.</p>
+          <div class="hero-buttons">
+            <a href="{{ routes.all_products_collection_url }}" class="btn-primary">Ver Todos los Productos</a>
+            <a href="{{ routes.root_url }}" class="btn-secondary">Explorar la Tienda</a>
           </div>
         </div>
-        <div class="ads-hero__section__center">
-          <div class="center-container">
-            {% if section.settings.box_image != blank %}
-              <img
-                src="{{ section.settings.box_image | image_url }}"
-                width="170%"
-                height="auto"
-                alt="Caja celestial Ojos de Ángel"
-                class="ads-hero__box-bg"
-                loading="lazy"
-              >
-            {% endif %}
-            <div class="lower-center-container">
-              <div class="comentarios-left">
-                <p class="testimonial">
-                  ✨ “Una experiencia mágica desde el empaque.”<br>
-                  <span class="autor">— Laura, Medellín</span>
+      </section>
+      {% if section.settings.collection %}
+        <div class="product-cards-wrapper-web">
+          {% for product in section.settings.collection.products limit: 3 %}
+            <div class="product-card-web">
+              <div class="product-info-web">
+                <h2 class="product-title-web">{{ product.title }}</h2>
+                <p class="product-price-web">
+                  <span class="current-price-web">{{ product.price | money_without_trailing_zeros }}</span>
+                  {% if product.compare_at_price > product.price %}
+                    <span class="old-price-web">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                  {% endif %}
                 </p>
-                <p class="testimonial">
-                  ✨ “Lo compré como regalo, pero terminé usándolo yo. ¡Mágico de verdad!”<br>
-                  <span class="autor">— Camila, Cali</span>
-                </p>
+                {% if product.metafields.custom.featuredtext != blank %}
+                  {% assign featured_items = product.metafields.custom.featuredtext.value | split: ' | ' %}
+                  <ul class="product-benefits-web">
+                    {% for item in featured_items %}
+                      <li>• {{ item }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+                <a href="{{ product.url }}" class="product-button-web">Lo quiero ya 🔥</a>
               </div>
 
-              <div class="iconos-footer">
-                <div class="icono-item">
-                  <span class="svg-wrapper">{{- 'icon-shipment.svg' | inline_asset_content -}}</span>
-                  <p class="icono-item-text">{{ section.settings.icon_1_text }}</p>
+              {% if product.featured_image %}
+                <div class="product-image-wrapper-web">
+                  <img
+                    src="{{ product.featured_image | image_url: width: 500 }}"
+                    alt="{{ product.title }} - juguete íntimo discreto"
+                    class="product-image-web"
+                    loading="lazy"
+                    width="100%"
+                    height="auto"
+                  >
                 </div>
-                <div class="icono-item">
-                  <span class="svg-wrapper">{{- 'icon-gift.svg' | inline_asset_content -}}</span>
-                  <p class="icono-item-text">{{ section.settings.icon_2_text }}</p>
-                </div>
-                <div class="icono-item">
-                  <span class="svg-wrapper">{{- 'icon-mysthic.svg' | inline_asset_content -}}</span>
-                  <p class="icono-item-text">{{ section.settings.icon_3_text }}</p>
-                </div>
-                <div class="icono-item">
-                  <span class="svg-wrapper">{{- 'icon-secure-card.svg' | inline_asset_content -}}</span>
-                  <p class="icono-item-text">{{ section.settings.icon_4_text }}</p>
-                </div>
-              </div>
+              {% endif %}
             </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+      <div class="benefits-block-web">
+        <div class="benefit-web">
+          <div class="icon-circle-web lavender">
+            <img
+              src="{{ 'freeShip.svg' | asset_url }}"
+              alt="Ícono envío discreto"
+              class="benefit-icon-web"
+              width="40"
+              height="40"
+            >
+          </div>
+          <div class="benefit-text-web">
+            <h3>Envío discreto</h3>
+            <p>Sin logos. Nadie sabrá lo que llega… salvo tú.</p>
           </div>
         </div>
-        <div class="ads-hero__section z-index-1">
-          <div class="contenido">
-            <p class="ads-hero__subtitle">
-              {{ section.settings.right_title }}
-            </p>
-            <p class="ads-hero__subtitle">
-              {{ section.settings.right_subtitle }}
-            </p>
-            <a
-              href="{{ section.settings.right_button_link }}"
-              class="ads-hero__button"
+
+        <div class="benefit-web">
+          <div class="icon-circle-web peach">
+            <img
+              src="{{ 'package.svg' | asset_url }}"
+              alt="Ícono empaque elegante"
+              class="benefit-icon-web"
+              width="40"
+              height="40"
             >
-              {{ section.settings.righ_button_label }}
-            </a>
+          </div>
+          <div class="benefit-text-web">
+            <h3>Empaque elegante</h3>
+            <p>Empaque mágico que eleva el placer desde el primer vistazo.</p>
+          </div>
+        </div>
+
+        <div class="benefit-web">
+          <div class="icon-circle-web blue">
+            <img
+              src="{{ 'pago.svg' | asset_url }}"
+              alt="Ícono pago seguro"
+              class="benefit-icon-web"
+              width="40"
+              height="40"
+            >
+          </div>
+          <div class="benefit-text-web">
+            <h3>Paga seguro</h3>
+            <p>Pagos cifrados y confiables.</p>
+          </div>
+        </div>
+
+        <div class="benefit-web">
+          <div class="icon-circle-web purple">
+            <img
+              src="{{ 'energia.svg' | asset_url }}"
+              alt="Ícono energia mistica"
+              class="benefit-icon-web"
+              width="40"
+              height="40"
+            >
+          </div>
+          <div class="benefit-text-web">
+            <h3>Energía mística</h3>
+            <p>Cada producto elegido con intención: placer, conexión y expansión.</p>
           </div>
         </div>
       </div>
-      <div class="lower-container">
-        <div class="center-flex">
-          <div class="comentarios-left">
-            <p class="testimonial">
-              ✨ “Una experiencia mágica desde el empaque.”<br>
-              <span class="autor">— Laura, Medellín</span>
+      <div class="testimonial-section-web">
+        <h2 class="testimonial-heading-web">✨ Lo que dicen nuestras almas celestiales</h2>
+
+        <div class="testimonial-cards-web">
+          <div class="testimonial-card-web">
+            <p class="testimonial-text-web">
+              “Me llegó rapidísimo, en una cajita preciosa. Nadie sospechó nada. ¡Ya quiero pedir más!”
             </p>
-            <p class="testimonial">
-              ✨ “Lo compré como regalo, pero terminé usándolo yo. ¡Mágico de verdad!”<br>
-              <span class="autor">— Camila, Cali</span>
-            </p>
+            <p class="testimonial-author-web">— Valentina R.</p>
           </div>
 
-          <div class="iconos-footer">
-            <div class="icono-item">
-              <span class="svg-wrapper">{{- 'icon-shipment.svg' | inline_asset_content -}}</span>
-              <p>{{ section.settings.icon_1_text }}</p>
-            </div>
-            <div class="icono-item">
-              <span class="svg-wrapper">{{- 'icon-gift.svg' | inline_asset_content -}}</span>
-              <p>{{ section.settings.icon_2_text }}</p>
-            </div>
-            <div class="icono-item">
-              <span class="svg-wrapper">{{- 'icon-mysthic.svg' | inline_asset_content -}}</span>
-              <p>{{ section.settings.icon_3_text }}</p>
-            </div>
-            <div class="icono-item">
-              <span class="svg-wrapper">{{- 'icon-secure-card.svg' | inline_asset_content -}}</span>
-              <p>{{ section.settings.icon_4_text }}</p>
-            </div>
+          <div class="testimonial-card-web">
+            <p class="testimonial-text-web">✨ “Pensé que era un regalo para ella… y terminamos usándolo juntos.”</p>
+            <p class="testimonial-author-web">— Andrés & Lina, Medellín.</p>
+          </div>
+
+          <div class="testimonial-card-web">
+            <p class="testimonial-text-web">
+              “Me encantó la atención, los detalles y la energía del paquete. Todo se sintió especial.”
+            </p>
+            <p class="testimonial-author-web">— Camila D.</p>
           </div>
         </div>
       </div>
     </div>
   </main>
-  <footer></footer>
 </section>
 <style></style>
 
@@ -125,6 +173,17 @@
   "tag": "section",
   "class": "section section-hero",
   "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Products"
+    },
+    {
+      "type": "text",
+      "id": "store_name",
+      "label": "Nombre de la tienda",
+      "default": "Ojos de Ángel"
+    },
     {
       "type": "link_list",
       "id": "menu",
