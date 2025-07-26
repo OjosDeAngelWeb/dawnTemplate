@@ -347,12 +347,22 @@
   </div>
   <div class="envio-gratis-marquesina primera">
     <div class="marquee-wrapper">
-      <p class="texto-marquesina">✨ ¡Envíos gratis en compras superiores a $120.000!</p>
+      <p class="texto-marquesina desktop-text">
+        ✨ ¡Envíos gratis en compras superiores a $120.000! - - 🚚 ¡Pagos contra entrega en el Valle de Aburrá!
+      </p>
+      <p class="texto-marquesina mobile-text">✨ ¡Envíos gratis en compras superiores a $120.000!</p>
     </div>
   </div>
 </header>
 
 <style>
+  .mobile-text {
+    display: none;
+  }
+
+  .desktop-text {
+    display: inline-block;
+  }
   /* Reset básico */
   .header-principal {
     font-family: 'Lato', sans-serif;
@@ -576,6 +586,13 @@
     width: 100%;
   }
 
+  .mobile-text {
+    display: inline-block;
+    min-width: 100%;
+    width: 100%;
+    text-align: center;
+  }
+
   .header__search-button {
     background: none;
     border: none;
@@ -653,6 +670,12 @@
 
   /* Responsive */
   @media (max-width: 768px) {
+    .mobile-text {
+      display: inline-block;
+    }
+    .desktop-text {
+      display: none;
+    }
     .texto-marquesina {
       font-size: 13px;
       animation-duration: 10s;
@@ -799,6 +822,19 @@
   }
 {%- endstyle -%}
 <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const texto = document.querySelector('.mobile-text');
+    const mensajes = [
+      '✨ ¡Envíos gratis en compras superiores a $120.000!',
+      '🚚 ¡Pagos contra entrega en el Valle de Aburrá!',
+    ];
+    let index = 0;
+
+    texto.addEventListener('animationiteration', () => {
+      index = (index + 1) % mensajes.length;
+      texto.textContent = mensajes[index];
+    });
+  });
   function toggleMenu() {
     const menu = document.getElementById('menu-mobile');
     menu.classList.toggle('mostrar');
