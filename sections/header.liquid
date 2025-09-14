@@ -173,7 +173,13 @@
 
   <!-- Mobile -->
   <div class="header-mobile">
-    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú">
+    <button
+      class="menu-toggle"
+      onclick="toggleMenu(true)"
+      aria-label="Abrir menú"
+      aria-controls="menu-mobile"
+      aria-expanded="false"
+    >
       <svg class="icono-hamburguesa" viewBox="0 0 24 24">
         <path d="M3 6h18M3 12h18M3 18h18" stroke="#6c103b" stroke-width="2" stroke-linecap="round"/>
       </svg>
@@ -250,7 +256,23 @@
   </div>
 
   <!-- Menú lateral mobile -->
-  <div id="menu-mobile" class="menu-mobile oculto">
+  <div
+    id="menu-mobile"
+    class="menu-mobile"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="mobileMenuTitle"
+    tabindex="-1"
+  >
+    <div class="menu-mobile__header">
+      <h2 id="mobileMenuTitle" class="visually-hidden">Menú</h2>
+      <button class="menu-close" aria-label="Cerrar menú" onclick="toggleMenu(false)">
+        <!-- ícono X -->
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <path d="M6 6l12 12M18 6L6 18" stroke="#6c103b" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
     <div
       class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}"
       tabindex="-1"
@@ -310,41 +332,37 @@
         </search-form>
       {%- endif -%}
     </div>
-    <details>
-      <summary style="cursor: pointer; font-size: 18px; color: #6c103b; font-weight: 600;">
-        Tienda Celestial
-        <svg class="chevron-icon" viewBox="0 0 24 24" width="20" height="20">
-          <path d="M8 10l4 4 4-4" fill="none" stroke="#6c103b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </summary>
-      <ul class="submenu-mobile">
-        {% for link in linklists[section.settings.menu].links %}
-          <li>
-            <a href="{{ link.url }}">{{ link.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </details>
+    <a
+      href="{{ routes.root_url }}"
+      style="cursor: pointer; font-size: 18px; color: #6c103b; font-weight: 600; text-decoration: none; display: block; padding: 10px 0;"
+    >
+      Tienda Celestial
+    </a>
+    <ul class="submenu-mobile">
+      {% for link in linklists[section.settings.menu].links %}
+        <li>
+          {% assign parts = link.title | split: ';' %}
+          <a href="{{ link.url }}">{{ parts[0] | strip }}</a>
+        </li>
+      {% endfor %}
+    </ul>
     {% for block in section.blocks %}
       {% if block.type == 'blog_menu' and linklists[block.settings.menu_blog] %}
-        <details>
-          <summary style="cursor: pointer; font-size: 18px; color: #6c103b; font-weight: 600;">
-            Blog Rituales y consejos
-            <svg class="chevron-icon" viewBox="0 0 24 24" width="20" height="20">
-              <path d="M8 10l4 4 4-4" fill="none" stroke="#6c103b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <ul class="submenu-mobile">
-            {% for link in linklists[block.settings.menu_blog].links %}
-              <li>
-                <a href="{{ link.url }}">{{ link.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </details>
+        <summary style="cursor: pointer; font-size: 18px; color: #6c103b; font-weight: 600;">
+          Blog Rituales y consejos
+        </summary>
+        <ul class="submenu-mobile">
+          {% for link in linklists[block.settings.menu_blog].links %}
+            <li>
+              {% assign parts = link.title | split: ';' %}
+              <a href="{{ link.url }}">{{ parts[0] | strip }}</a>
+            </li>
+          {% endfor %}
+        </ul>
       {% endif %}
     {% endfor %}
   </div>
+  <div id="menu-backdrop" class="menu-backdrop" onclick="toggleMenu(false)"></div>
   <div class="envio-gratis-marquesina primera">
     <div class="marquee-wrapper">
       <p class="texto-marquesina desktop-text">
@@ -356,6 +374,18 @@
 </header>
 
 <style>
+  .visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   .mobile-text {
     display: none;
   }
@@ -405,9 +435,75 @@
   }
   .menu-mobile {
     display: none;
-    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 85%;
+    max-width: 340px;
     background: #fff0f5;
-    padding: 20px;
+    box-shadow: 2px 0 24px rgba(0, 0, 0, 0.12);
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+    /* Evitar que tape el contenido con display:none */
+    visibility: hidden;
+  }
+  .menu-mobile.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+  .menu-mobile__header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px;
+  }
+
+  .menu-close {
+    background: transparent;
+    border: 0;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .menu-close:hover {
+    background: #f8eaf5;
+  }
+
+  /* Backdrop clicable */
+  .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.28);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1090;
+    transition: opacity 0.25s ease;
+  }
+  .menu-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Evita scroll del body cuando el menú está abierto */
+  .body-lock {
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  /* Preferencias de movimiento reducido */
+  @media (prefers-reduced-motion: reduce) {
+    .menu-mobile {
+      transition: none !important;
+    }
+    .menu-backdrop {
+      transition: none !important;
+    }
   }
   .menu-mobile a {
     padding: 10px 0;
@@ -815,6 +911,46 @@
     gap: 0.5rem;
     padding-left: 1rem;
   }
+
+  .menu-mobile {
+    padding: max(12px, env(safe-area-inset-top)) 16px 24px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    z-index: 9999; /* sube la capa del panel */
+  }
+
+  /* Header del panel fijo arriba (el botón de cerrar siempre visible) */
+  .menu-mobile__header {
+    position: sticky;
+    top: 0;
+    background: #fff0f5;
+    z-index: 1;
+    padding: 8px 0 6px;
+    margin: 0;
+  }
+
+  /* Backdrop debajo del panel pero por encima del sitio */
+  .menu-backdrop {
+    z-index: 9998;
+  }
+
+  /* Quita márgenes que empujan el contenido hacia abajo dentro del panel */
+  #menu-mobile .search-modal__content {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+  }
+  #menu-mobile .header__search-form {
+    margin: 8px 0 16px !important;
+  }
+  #menu-mobile details {
+    border-top: 1px solid #efdae6;
+    padding: 12px 0;
+  }
+  #menu-mobile summary {
+    list-style: none;
+  }
 </style>
 {%- style -%}
   .header {
@@ -835,9 +971,77 @@
       texto.textContent = mensajes[index];
     });
   });
-  function toggleMenu() {
-    const menu = document.getElementById('menu-mobile');
-    menu.classList.toggle('mostrar');
+  const menuPanel = document.getElementById('menu-mobile');
+  const backdrop = document.getElementById('menu-backdrop');
+  const openButton = document.querySelector('.menu-toggle');
+  let lastFocused = null;
+
+  // Enlaces dentro del menú cierran al hacer click (mejora UX)
+  function wireMenuLinksClose() {
+    menuPanel.querySelectorAll('a, button').forEach((el) => {
+      // evita cerrar al usar los summary/details
+      if (el.closest('summary')) return;
+      if (el.classList.contains('menu-close')) return;
+      el.addEventListener('click', () => toggleMenu(false));
+    });
+  }
+
+  function trapFocus(e) {
+    if (!menuPanel.classList.contains('is-open')) return;
+
+    const focusables = menuPanel.querySelectorAll(
+      'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+
+    if (e.key === 'Tab') {
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
+  function toggleMenu(open) {
+    const shouldOpen = typeof open === 'boolean' ? open : !menuPanel.classList.contains('is-open');
+
+    if (shouldOpen) {
+      lastFocused = document.activeElement;
+      menuPanel.classList.add('is-open');
+      backdrop.classList.add('is-open');
+      document.body.classList.add('body-lock');
+
+      openButton.setAttribute('aria-expanded', 'true');
+
+      // Enfoca el primer foco útil dentro del panel
+      const firstFocusable = menuPanel.querySelector('input, button, a, [tabindex]:not([tabindex="-1"])');
+      (firstFocusable || menuPanel).focus();
+
+      document.addEventListener('keydown', onKeydown);
+      document.addEventListener('keydown', trapFocus);
+      wireMenuLinksClose();
+    } else {
+      menuPanel.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
+      document.body.classList.remove('body-lock');
+
+      openButton.setAttribute('aria-expanded', 'false');
+
+      document.removeEventListener('keydown', onKeydown);
+      document.removeEventListener('keydown', trapFocus);
+
+      // Devuelve el foco al botón que abrió
+      if (lastFocused) lastFocused.focus();
+    }
+  }
+
+  function onKeydown(e) {
+    if (e.key === 'Escape') toggleMenu(false);
   }
   document.addEventListener('DOMContentLoaded', function () {
     const toggleButtons = document.querySelectorAll('.categories-btn');

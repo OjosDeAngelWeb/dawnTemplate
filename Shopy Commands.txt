@@ -1,0 +1,3 @@
+shopify theme dev --store nuxpge-gx.myshopify.com 
+shopify theme push --store nuxpge-gx.myshopify.com
+shopify theme pull --store nuxpge-gx.myshopify.com
